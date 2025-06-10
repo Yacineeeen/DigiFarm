@@ -1,0 +1,140 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Maintenance{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .centered-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e8eaf6);
+        }
+        .machine-details-container {
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .machine-details-title {
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #512da8;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .table {
+            border-radius: 8px;
+            overflow: hidden;
+            width: 100%;
+        }
+        .table th {
+            background-color: #512da8;
+            color: #fff;
+            text-transform: uppercase;
+            padding: 12px;
+            font-weight: bold;
+        }
+        .table td {
+            background-color: #ffffff;
+            color: #333;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .table tr:hover {
+            background-color: #ede7f6;
+        }
+        .btn-primary {
+            background-color: #d32f2f;
+            color: white;
+            border-radius: 6px;
+            padding: 10px 15px;
+            transition: 0.3s ease-in-out;
+        }
+        .btn-primary:hover {
+            background-color: #b71c1c;
+        }
+        .btn-secondary {
+            background-color: #455a64;
+            color: white;
+            border-radius: 6px;
+            padding: 10px 15px;
+            transition: 0.3s ease-in-out;
+        }
+        .btn-secondary:hover {
+            background-color: #37474f;
+        }
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="centered-container">
+    <div class="machine-details-container">
+        <h1 class="machine-details-title">Maintenance</h1>
+
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ maintenance.id }}</td>
+                </tr>
+                <tr>
+                    <th>Date Entretien</th>
+                    <td>{{ maintenance.dateEntretien ? maintenance.dateEntretien|date('Y-m-d') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Cost</th>
+                    <td>{{ maintenance.cout }}</td>
+                </tr>
+                <tr>
+                    <th>Temperature</th>
+                    <td>{{ maintenance.temperature }}</td>
+                </tr>
+                <tr>
+                    <th>Humidity</th>
+                    <td>{{ maintenance.humidite }}</td>
+                </tr>
+                <tr>
+                    <th>Fuel Consumption</th>
+                    <td>{{ maintenance.consoCarburant }}</td>
+                </tr>
+                <tr>
+                    <th>Energy Consumption</th>
+                    <td>{{ maintenance.consoEnergie }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ maintenance.status.value }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="actions">
+            <a class="btn btn-primary" href="{{ path('app_maintenance2_index') }}">Back to list</a>
+            <a class="btn btn-secondary" href="{{ path('app_maintenance2_edit', {'id': maintenance.id}) }}">Edit</a>
+            <a class="btn btn-danger" href="{{ path('app_maintenance2_delete', {'id': maintenance.id}) }}" 
+               onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

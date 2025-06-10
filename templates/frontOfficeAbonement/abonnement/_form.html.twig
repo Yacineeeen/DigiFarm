@@ -1,0 +1,79 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}})}}
+    
+<div>
+    {{ form_label(form.idc , "ID client ") }}
+    {{ form_widget(form.idc) }}
+    {{ form_errors(form.idc) }}
+</div>
+
+<div>
+    {{ form_label(form.nom , "Nom ") }}
+    {{ form_widget(form.nom) }}
+    {{ form_errors(form.nom) }}
+</div>
+
+<div>
+    {{ form_label(form.prenom , "Prénom" ) }}
+    {{ form_widget(form.prenom) }}
+    {{ form_errors(form.prenom) }}
+</div>
+
+<div>
+    {{ form_label(form.numero, "Numéro de téléphone ") }}
+    {{ form_widget(form.numero) }}
+    {{ form_errors(form.numero) }}
+</div>
+
+<div>
+    {{ form_label(form.typeabb , "Type abonnement " ) }}
+    {{ form_widget(form.typeabb, {'attr': {'id': 'abonnement_typeabb'}}) }}
+    {{ form_errors(form.typeabb) }}
+</div>
+
+<div>
+    {{ form_label(form.dureeabb , "Durée abonnement " ) }}
+    {{ form_widget(form.dureeabb, {'attr': {'id': 'abonnement_dureeabb'}}) }}
+    {{ form_errors(form.dureeabb) }}
+</div>
+
+
+
+<div style="text-align: center; margin-top: 20px;">
+    <button type="submit" class="btn">{{ button_label|default('Save') }}</button>
+</div>
+
+{{ form_end(form) }}
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        const abonnementSelect = document.getElementById("abonnement_typeabb");
+        const dureeSelect = document.getElementById("abonnement_dureeabb");
+        const prixInput = document.getElementById("prix_final");
+
+        if (!abonnementSelect || !dureeSelect || !prixInput) {
+            console.error("Un des éléments requis est introuvable.");
+            return;
+        }
+
+        function updatePrice() {
+            const abonnement = abonnementSelect.value;
+            const duree = parseInt(dureeSelect.value) || 0;
+            
+            let prixParMois = {
+                "bronze": 10,
+                "silver": 15,
+                "gold": 20
+            }[abonnement] || 0;
+            
+            let prixFinal = prixParMois * duree;
+            console.log("Prix calculé:", prixFinal);
+            prixInput.value = prixFinal ? prixFinal.toFixed(2) : "0";
+        }
+
+        abonnementSelect.addEventListener("change", updatePrice);
+        dureeSelect.addEventListener("change", updatePrice);
+        
+        // Mise à jour initiale du prix au chargement de la page
+        updatePrice();
+    });
+</script>

@@ -1,0 +1,60 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Culture Index{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+ <div class="container mt-4 pt-5">
+    <h1 class="text-center text-primary mb-4">Culture</h1>
+    <div class="card shadow-lg p-4">
+    <div class="card shadow-lg p-4">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Surface</th>
+                        <th>Date de Plantation</th>
+                        <th>Date de Récolte</th>
+                        <th>Région</th>
+                        <th>Type de Culture</th>
+                        <th>Densité de Plantation</th>
+                        <th>Besoins en Eau</th>
+                        <th>Besoins en Engrais</th>
+                        <th>Rendement Moyen</th>
+                        <th>Coût Moyen</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for culture in cultures %}
+                    <tr>
+                        <td>{{ culture.nom }}</td>
+                        <td>{{ culture.surface }}</td>
+                        <td>{{ culture.datePlantation ? culture.datePlantation|date('Y-m-d') : '' }}</td>
+                        <td>{{ culture.dateRecolte ? culture.dateRecolte|date('Y-m-d') : '' }}</td>
+                        <td>{{ culture.region }}</td>
+                        <td>{{ culture.typeCulture }}</td>
+                        <td>{{ culture.densitePlantation }}</td>
+                        <td>{{ culture.besoinsEau }}</td>
+                        <td>{{ culture.besoinsEngrais.value }}</td>
+                        <td>{{ culture.rendementMoyen }}</td>
+                        <td>{{ culture.coutMoyen }}</td>
+                        <td>
+                            <a href="{{ path('app_culture_show', {'context': app.request.get('context'), 'id': culture.id}) }}" class="btn btn-info btn-sm">Show</a>
+                            <a href="{{ path('app_culture_edit', {'context': app.request.get('context'), 'id': culture.id}) }}" class="btn btn-warning btn-sm">Edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="12" class="text-center">No records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+   
+</div>
+{% endblock %}

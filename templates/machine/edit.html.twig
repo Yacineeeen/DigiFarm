@@ -1,0 +1,184 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block title %}Edit Machine{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #e9f5e9; /* Light green background */
+            color: #333;
+        }
+
+        .machine-edit {
+            margin: 40px auto;
+            padding: 30px;
+            max-width: 800px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .machine-edit h1 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50; /* Dark blue for headings */
+            text-align: center;
+        }
+
+        /* Form Container */
+        .machine-edit .form-container {
+            margin-bottom: 25px;
+        }
+
+        .machine-edit .form-group {
+            margin-bottom: 20px;
+        }
+
+        .machine-edit .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #27ae60; /* Green for labels */
+        }
+
+        .machine-edit .form-group input,
+        .machine-edit .form-group select,
+        .machine-edit .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .machine-edit .form-group input:focus,
+        .machine-edit .form-group select:focus,
+        .machine-edit .form-group textarea:focus {
+            border-color: #27ae60; /* Green border on focus */
+            outline: none;
+        }
+
+        /* Buttons */
+        .machine-edit .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end; /* Align buttons to the right */
+            margin-top: 25px;
+        }
+
+        .machine-edit .btn {
+            padding: 12px 25px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 160px; /* Consistent button width */
+        }
+
+        .machine-edit .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .machine-edit .btn-primary {
+            background-color: #27ae60; /* Green for primary actions */
+        }
+
+        .machine-edit .btn-primary:hover {
+            background-color: #219653; /* Darker green on hover */
+        }
+
+        .machine-edit .btn-secondary {
+            background-color: #95a5a6; /* Gray for secondary actions */
+        }
+
+        .machine-edit .btn-secondary:hover {
+            background-color: #7f8c8d; /* Darker gray on hover */
+        }
+
+        .machine-edit .btn-danger {
+            background-color: #e74c3c; /* Red for delete actions */
+        }
+
+        .machine-edit .btn-danger:hover {
+            background-color: #c0392b; /* Darker red on hover */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .machine-edit {
+                padding: 20px;
+            }
+
+            .machine-edit h1 {
+                font-size: 24px;
+            }
+
+            .machine-edit .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .machine-edit .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="machine-edit">
+        <h1></h1>
+
+        <div class="form-container">
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'form-horizontal'}}) }}
+                {{ form_errors(form) }}
+
+                <div class="form-group">
+                    {{ form_label(form.nom, "Machine Name") }}
+                    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.nom) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.type, "Machine Type") }}
+                    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.type) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.date_achat, "Purchase Date") }}
+                    {{ form_widget(form.date_achat, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.date_achat) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.etat, "Condition") }}
+                    {{ form_widget(form.etat, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.etat) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.etat_pred, "Previous Condition") }}
+                    {{ form_widget(form.etat_pred, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.etat_pred) }}
+                </div>
+
+                <button class="btn btn-primary">{{ button_label|default('Update') }}</button>
+            {{ form_end(form) }}
+        </div>
+
+        <div class="actions">
+            <a class="btn btn-secondary" href="{{ path('app_machine_index') }}">Back to list</a>
+            {{ include('machine/_delete_form.html.twig', { 'machine': machine }) }}
+        </div>
+    </div>
+{% endblock %}

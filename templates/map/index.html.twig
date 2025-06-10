@@ -1,0 +1,106 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Find Nearest Technician{% endblock %}
+
+{% block stylesheets %}
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Select Machine Location</h1>
+    <div id="map"></div>
+    <form id="locationForm">
+        <input type="hidden" id="latitude" name="latitude">
+        <input type="hidden" id="longitude" name="longitude">
+        <button type="submit">Find Nearest Technician</button>
+    </form>
+    <p id="result"></p>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        let map;
+        let marker;
+
+        // Initialize the map
+        function initMap() {
+            console.log('Initializing map...'); // Debugging
+
+            // Create the map
+            map = L.map('map').setView([36.8065, 10.1815], 8); // Center on Tunisia
+
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            console.log('Map initialized:', map); // Debugging
+
+            // Add a marker
+            marker = L.marker([36.8065, 10.1815], { draggable: true }).addTo(map);
+
+            console.log('Marker added:', marker); // Debugging
+
+            // Update hidden fields when marker is dragged
+            marker.on('dragend', () => {
+                const latLng = marker.getLatLng();
+                document.getElementById('latitude').value = latLng.lat;
+                document.getElementById('longitude').value = latLng.lng;
+            });
+        }
+
+        // Handle form submission
+       document.addEventListener('DOMContentLoaded', function () {
+    initMap(); // Initialize the map when the page loads
+
+    document.getElementById('locationForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const latitude = document.getElementById('latitude').value;
+        const longitude = document.getElementById('longitude').value;
+
+        if (!latitude || !longitude) {
+            alert("Please move the marker to select a location.");
+            return;
+        }
+
+        console.log('Sending coordinates:', { latitude, longitude }); // Debugging
+
+        // Send coordinates to the back-end
+        fetch('/find-nearest-technicien', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ latitude, longitude }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Response:', data); // Debugging
+            if (data.technicien) {
+                document.getElementById('result').innerText = 
+                    `Nearest Technician: ${data.technicien.name} (Distance: ${data.distance.toFixed(2)} km)`;
+            } else {
+                document.getElementById('result').innerText = "No technician found.";
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('result').innerText = "An error occurred. Please try again.";
+        });
+    });
+});
+    </script>
+{% endblock %}

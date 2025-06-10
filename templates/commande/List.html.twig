@@ -1,0 +1,46 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Commande index{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4  text-center">Commande index</h1>
+
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Statut</th>
+                    <th>Montant Total</th>
+                    <th>Date Commande</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+            {% for commande in commandes %}
+    <tr>
+        <td>{{ commande.id }}</td>
+        <td>{{ commande.statut }}</td>
+        <td>{{ commande.montantTotal }}</td>
+        <td>{{ commande.dateCommande ? commande.dateCommande|date('d-m-Y  H'): '-' }}</td>
+        <td>
+            
+
+            <!--  Bouton Ajouter un produit à une commande -->
+            {% if commande.produit is defined and commande.produit is not null %}
+                <a href="{{ path('app_commande_ajout_produit', {'id': commande.produit.id}) }}" class="btn btn-success btn-sm">
+                    Ajouter produit
+                </a>
+            {% endif %}
+        </td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="8" class="text-center">No records found</td>
+    </tr>
+{% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

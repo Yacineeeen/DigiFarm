@@ -1,0 +1,12 @@
+{% extends 'base_front_etude.html.twig' %}
+
+
+{% block title %}New Etude{% endblock %}
+
+{% block body %}
+    <h1>Create new Etude</h1>
+
+    {{ include('frontOfficeEtude/etude/_form.html.twig') }}
+
+   <center>  <a  href="{{ path('front_page') }}"  class="button">back to list</a> </center>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block title %}Détails de l'Étude{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="text-center text-light mb-4">🌿 Détails de l'Étude Agricole 🌾</h1>
+
+    <div class="card shadow-lg border-0 rounded bg-dark text-light">
+        <div class="card-body p-5">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="info-box">
+                        <h5>ID</h5>
+                        <p>{{ etude.id }}</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Date</h5>
+                        <p>{{ etude.dateR ? etude.dateR|date('Y-m-d') : 'Non définie' }}</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Climat</h5>
+                        <p class="badge bg-success">{{ etude.climat.value }}</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Type de sol</h5>
+                        <p class="badge bg-warning">{{ etude.typeSol.value }}</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="info-box">
+                        <h5>Irrigation</h5>
+                        <p>{{ etude.irrigation ? '✔️ Oui' : '❌ Non' }}</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Fertilisation</h5>
+                        <p>{{ etude.fertilisation ? '✔️ Oui' : '❌ Non' }}</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Prix (€)</h5>
+                        <p class="text-warning fw-bold">{{ etude.prix }} €</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Rendement</h5>
+                        <p class="text-info fw-bold">{{ etude.rendement }}</p>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="info-box">
+                        <h5>Précipitations</h5>
+                        <p>{{ etude.precipitations }}</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Main-d'œuvre</h5>
+                        <p>{{ etude.mainOeuvre }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="{{ path('app_etude_index', {'context': app.request.get('context')}) }}" class="btn btn-secondary">🔙 Retour</a>
+                <a href="{{ path('app_etude_download_pdf', {'context': app.request.get('context'), 'id': etude.id}) }}" class="btn btn-success">📥 Télécharger PDF</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .info-box {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .info-box h5 {
+        font-weight: bold;
+        color: #a8df65; /* Green agriculture theme */
+    }
+    .info-box p {
+        font-size: 18px;
+        color: white;
+    }
+</style>
+{% endblock %}

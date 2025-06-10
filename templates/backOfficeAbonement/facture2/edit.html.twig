@@ -1,0 +1,13 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Edit Facture{% endblock %}
+
+{% block body %}
+    <h1>Edit Facture</h1>
+
+    {{ include('backOfficeAbonement/facture2/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_facture2_index') }}">back to list</a>
+
+    {{ include('backOfficeAbonement/facture2/_delete_form.html.twig') }}
+{% endblock %}

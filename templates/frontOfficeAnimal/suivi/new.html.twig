@@ -1,0 +1,10 @@
+{% extends 'base_front_etude.html.twig' %}
+
+
+{% block body %}
+    <h1>Create new Suivi</h1>
+
+    {{ include('frontOfficeAnimal/suivi/_form.html.twig') }}
+
+  <center>  <a href="{{ path('app_suivi_index') }}" class="button">back to list</a></center>
+{% endblock %}

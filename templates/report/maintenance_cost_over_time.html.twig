@@ -1,0 +1,107 @@
+{% extends 'back/base.html.twig' %}
+
+
+{% block title %}Maintenance Cost Over Time{% endblock %}
+
+{% block stylesheets %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+  <div class="container mt-4 pt-5">
+        <h1 class="text-center text-primary mb-4">Maintenance</h1>
+        <div class="card shadow-lg p-4">
+    <h1>Maintenance Cost Over Time</h1>
+    <div>
+        <button id="barChartBtn">Bar Chart</button>
+        <button id="lineChartBtn">Line Chart</button>
+        <button id="pieChartBtn">Pie Chart</button>
+    </div>
+    <canvas id="maintenanceCostOverTimeChart" width="400" height="200"></canvas>
+
+    <script>
+        const ctx = document.getElementById('maintenanceCostOverTimeChart').getContext('2d');
+
+        // Generate unique colors for each date
+        function getRandomColor() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgba(${r}, ${g}, ${b}, 0.2)`;
+        }
+
+        function getRandomBorderColor() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgba(${r}, ${g}, ${b}, 1)`;
+        }
+
+        // Data from the backend
+        const labels = {{ data|map(d => d.dateEntretien|date('Y-m-d'))|json_encode|raw }};
+        const dataValues = {{ data|map(d => d.total_cost)|json_encode|raw }};
+
+        // Generate unique colors for each date
+        const backgroundColors = labels.map(() => getRandomColor());
+        const borderColors = labels.map(() => getRandomBorderColor());
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Total Maintenance Cost',
+                data: dataValues,
+                backgroundColor: backgroundColors,
+                borderColor: borderColors,
+                borderWidth: 1
+            }]
+        };
+
+        const options = {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        let chart = new Chart(ctx, {
+            type: 'bar', // Default chart type
+            data: data,
+            options: options
+        });
+
+        // Switch to Bar Chart
+        document.getElementById('barChartBtn').addEventListener('click', () => {
+            chart.destroy(); // Destroy the existing chart
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: options
+            });
+        });
+
+        // Switch to Line Chart
+        document.getElementById('lineChartBtn').addEventListener('click', () => {
+            chart.destroy(); // Destroy the existing chart
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: options
+            });
+        });
+
+        // Switch to Pie Chart
+        document.getElementById('pieChartBtn').addEventListener('click', () => {
+            chart.destroy(); // Destroy the existing chart
+            chart = new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: options
+            });
+        });
+    </script>
+    </div>
+  </div>
+</div>
+{% endblock %}

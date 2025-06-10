@@ -1,0 +1,43 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block title %}Facture index{% endblock %}
+
+{% block body %}
+    <h1>Facture index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prixt</th>
+                <th>Cin</th>
+                <th>Email</th>
+                <th>Datef</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for facture in factures %}
+            <tr>
+                <td>{{ facture.id }}</td>
+                <td>{{ facture.prixt }}</td>
+                <td>{{ facture.cin }}</td>
+                <td>{{ facture.email }}</td>
+                <td>{{ facture.datef ? facture.datef|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_facture_show', {'id': facture.id}) }}">show</a>
+                    <a href="{{ path('app_facture_edit', {'id': facture.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+  
+
+
+{% endblock %}

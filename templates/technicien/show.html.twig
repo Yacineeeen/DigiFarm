@@ -1,0 +1,167 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Technicien{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #e9f5e9; /* Light green background */
+            color: #333;
+        }
+
+        .technicien-details {
+            margin: 40px auto;
+            padding: 30px;
+            max-width: 800px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .technicien-details h1 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50; /* Dark blue for headings */
+            text-align: center;
+        }
+
+        /* Table Styles */
+        .technicien-details table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+        }
+
+        .technicien-details th, .technicien-details td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .technicien-details th {
+            background-color: #e0f7e0; /* Green background for headers */
+            color: black;
+            font-weight: 600;
+        }
+
+        /* Buttons */
+        .technicien-details .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end; /* Align buttons to the right */
+            margin-top: 25px;
+        }
+
+        .technicien-details .btn {
+            padding: 12px 25px;
+            text-decoration: none;
+            color: black;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 160px; /* Consistent button width */
+        }
+
+        .technicien-details .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .technicien-details .btn-primary {
+            background-color: #27ae60; /* Green for primary actions */
+        }
+
+        .technicien-details .btn-primary:hover {
+            background-color: #219653; /* Darker green on hover */
+        }
+
+        .technicien-details .btn-secondary {
+            background-color: #95a5a6; /* Gray for secondary actions */
+        }
+
+        .technicien-details .btn-secondary:hover {
+            background-color: #7f8c8d; /* Darker gray on hover */
+        }
+
+        .technicien-details .btn-danger {
+            background-color: #e74c3c; /* Red for delete actions */
+        }
+
+        .technicien-details .btn-danger:hover {
+            background-color: #c0392b; /* Darker red on hover */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .technicien-details {
+                padding: 20px;
+            }
+
+            .technicien-details h1 {
+                font-size: 24px;
+            }
+
+            .technicien-details .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .technicien-details .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="technicien-details">
+        <h1>Technicien</h1>
+
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ technicien.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ technicien.name }}</td>
+                </tr>
+                <tr>
+                    <th>Prenom</th>
+                    <td>{{ technicien.prenom }}</td>
+                </tr>
+                <tr>
+                    <th>Specialite</th>
+                    <td>{{ technicien.specialite }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ technicien.email }}</td>
+                </tr>
+                <tr>
+                    <th>Telephone</th>
+                    <td>{{ technicien.telephone }}</td>
+                </tr>
+                <tr>
+                    <th>Localisation</th>
+                    <td>{{ technicien.localisation }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="actions">
+            <a class="btn btn-primary" href="{{ path('app_technicien_index') }}">Back to list</a>
+            <a class="btn btn-secondary" href="{{ path('app_technicien_edit', {'id': technicien.id}) }}">Edit</a>
+            {{ include('technicien/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

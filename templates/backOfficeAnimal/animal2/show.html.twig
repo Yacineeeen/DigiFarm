@@ -1,0 +1,48 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block body %}
+    <div class="container mt-4 pt-5">
+        <h1 class="text-center text-primary mb-4">Animal</h1>
+
+        <div class="card shadow-lg p-4">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th class="bg-light">Id</th>
+                        <td>{{ animal.id }}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-light">Nom</th>
+                        <td>{{ animal.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-light">Type</th>
+                        <td>{{ animal.type }}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-light">Age</th>
+                        <td>{{ animal.age }}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-light">Poids</th>
+                        <td>{{ animal.poids }}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-light">Race</th>
+                        <td>{{ animal.race }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <a href="{{ path('app_animal2_index') }}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Retour à la liste
+                </a>
+            </div>
+
+            <div class="d-flex justify-content-center mt-3">
+                {{ include('backOfficeAnimal/animal2/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

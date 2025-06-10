@@ -1,0 +1,22 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Edit Expert{% endblock %}
+
+{% block body %}
+    <div class="container mt-4 pt-5">
+    <h1 class="text-center text-primary mb-4">Expert</h1>
+    <div class="card shadow-lg p-4">
+
+   
+    {{ include('backOfficeEtude/expert/_form.html.twig', {'button_label': 'Update'}) }}
+
+  <div style="text-align: center; margin-top: 20px;">
+            <a href="{{ path('app_expert_index',{'context': app.request.get('context')}) }}" class="button">Back to List</a>
+        </div>
+
+
+   
+    <div style="text-align: center; margin-top: 20px;">
+        {{ include('backOfficeEtude/expert/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

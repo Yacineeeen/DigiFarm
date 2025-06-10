@@ -1,0 +1,172 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Maintenance{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #e9f5e9; /* Light green background */
+            color: #333;
+        }
+
+        .maintenance-details {
+            margin: 40px auto;
+            padding: 30px;
+            max-width: 800px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .maintenance-details h1 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50; /* Dark blue for headings */
+            text-align: center;
+        }
+
+        /* Table Styles */
+        .maintenance-details table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+        }
+
+        .maintenance-details th, .maintenance-details td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .maintenance-details th {
+            background-color: #e0f7e0; /* Green background for headers */
+            color: black;
+            font-weight: 600;
+        }
+
+        /* Buttons */
+        .maintenance-details .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end; /* Align buttons to the right */
+            margin-top: 25px;
+        }
+
+        .maintenance-details .btn {
+            padding: 12px 25px;
+            text-decoration: none;
+            color: black;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 160px; /* Consistent button width */
+        }
+
+        .maintenance-details .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .maintenance-details .btn-primary {
+            background-color: #27ae60; /* Green for primary actions */
+        }
+
+        .maintenance-details .btn-primary:hover {
+            background-color: #219653; /* Darker green on hover */
+        }
+
+        .maintenance-details .btn-secondary {
+            background-color: #95a5a6; /* Gray for secondary actions */
+        }
+
+        .maintenance-details .btn-secondary:hover {
+            background-color: #7f8c8d; /* Darker gray on hover */
+        }
+
+        .maintenance-details .btn-danger {
+            background-color: #e74c3c; /* Red for delete actions */
+        }
+
+        .maintenance-details .btn-danger:hover {
+            background-color: #c0392b; /* Darker red on hover */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .maintenance-details {
+                padding: 20px;
+            }
+
+            .maintenance-details h1 {
+                font-size: 24px;
+            }
+
+            .maintenance-details .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .maintenance-details .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="maintenance-details">
+        <h1>Maintenance</h1>
+
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ maintenance.id }}</td>
+                </tr>
+                <tr>
+                    <th>Date Entretien</th>
+                    <td>{{ maintenance.dateEntretien ? maintenance.dateEntretien|date('Y-m-d') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Cost</th>
+                    <td>{{ maintenance.cout }}</td>
+                </tr>
+                <tr>
+                    <th>Temperature</th>
+                    <td>{{ maintenance.temperature }}</td>
+                </tr>
+                <tr>
+                    <th>Humidity</th>
+                    <td>{{ maintenance.humidite }}</td>
+                </tr>
+                <tr>
+                    <th>Fuel Consumption</th>
+                    <td>{{ maintenance.consoCarburant }}</td>
+                </tr>
+                <tr>
+                    <th>Energy Consumption</th>
+                    <td>{{ maintenance.consoEnergie }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ maintenance.status.value }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="actions">
+            <a class="btn btn-primary" href="{{ path('app_maintenance_index') }}">Back to list</a>
+            <a class="btn btn-secondary" href="{{ path('app_maintenance_edit', {'id': maintenance.id}) }}">Edit</a>
+            <a class="btn btn-danger" href="{{ path('app_maintenance_delete', {'id': maintenance.id}) }}" 
+               onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+        </div>
+    </div>
+{% endblock %}

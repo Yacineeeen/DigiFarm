@@ -1,0 +1,110 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Edit Machine{% endblock %}
+
+{% block stylesheets %}
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    {{ parent() }}
+    <style>
+        .machine-edit-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color:rgb(76, 106, 135);
+            border-radius: 8px;
+            box-shadow: 0 0 10px #9a28e6;
+        }
+        .machine-edit-title {
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #6a1b9a;
+            font-weight: bold;
+            text-align: center;
+        }
+        .form-container {
+            background-color: #6a1b9a;
+            padding: 20px;
+            border-radius: 8px;
+            color: #fff;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #fff;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .text-danger {
+            font-size: 0.875rem;
+            color: #dc3545;
+        }
+        .btn-primary {
+            background-color:hsl(0, 15.40%, 5.10%);
+            color: white;
+        }
+        .btn-secondary {
+            background-color:#498bc5;
+            color: white;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="machine-edit-container">
+        <h1 class="machine-edit-title">Edit Machine</h1>
+        <div class="form-container">
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'container p-4'}}) }}
+                
+                <div class="mb-3" style="margin-bottom: 1rem;">
+                    {{ form_label(form.nom , "Nom", {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.nom, {'attr': {'class': 'text-danger'}}) }}
+                </div>
+
+                <div class="mb-3" style="margin-bottom: 1rem;">
+                    {{ form_label(form.type , "Type", {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.type, {'attr': {'class': 'text-danger'}}) }}
+                </div>
+
+                <div class="mb-3" style="margin-bottom: 1rem;">
+                    {{ form_label(form.date_achat , "Date d'Achat", {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.date_achat, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.date_achat, {'attr': {'class': 'text-danger'}}) }}
+                </div>
+
+                <div class="mb-3" style="margin-bottom: 1rem;">
+                    {{ form_label(form.etat , "État", {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.etat, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.etat, {'attr': {'class': 'text-danger'}}) }}
+                </div>
+
+                <div class="mb-3" style="margin-bottom: 1rem;">
+                    {{ form_label(form.etat_pred , "État Précédent", {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.etat_pred, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.etat_pred, {'attr': {'class': 'text-danger'}}) }}
+                </div>
+
+                <div class="text-center mt-3" style="margin-top: 20px;">
+                    <button type="submit" class="btn btn-primary">{{ button_label|default('Update') }}</button>
+                </div>
+
+            {{ form_end(form) }}
+        </div>
+
+        <div class="actions">
+            <a class="btn btn-secondary" href="{{ path('app_machine2_index') }}">Back to list</a>
+            {{ include('machine2/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+{% endblock %}

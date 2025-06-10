@@ -1,0 +1,14 @@
+{% extends 'internaute.html.twig' %}
+{% block body %}
+<center>
+    <div class="form-box">
+        <div class="form">
+            <h1 class="title">S'inscrire</h1>
+            {{ include('frontOfficeUser/_form.html.twig') }}
+            <p>Si vous avez un compte, vous pouvez vous <a href="{{ path('login') }}">connecter ici</a>.</p>
+        </div>
+    </div>
+    </center>
+{% endblock %}
+
+

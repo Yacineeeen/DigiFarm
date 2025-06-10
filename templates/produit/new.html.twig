@@ -1,0 +1,32 @@
+
+
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Créer un Nouveau Produit{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid" style="background-color: #334D2D; min-height: 100vh; padding-top: 50px;">
+<div class="container">
+<h1 class="text-center mb-4 text-white">Créer un Nouveau Produit</h1>
+<div class="card shadow-sm p-4 mx-auto" style="max-width: 600px; background-color: #6d8c54; color: white;">
+
+<div class="card-body">
+
+{# Vérifie si le formulaire est bien chargé #}
+{% if form is defined %}
+{{ include('produit/_form.html.twig') }}
+{% else %}
+<p class="text-danger text-center">Le formulaire n'est pas disponible.</p>
+{% endif %}
+
+</div>
+
+<div class="text-center mt-4">
+<a href="{{ path('app_produit_index') }}" class="btn btn-secondary">
+Retour à la liste   </a>
+</div>
+</div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,33 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block body %}
+    <h1>Your Machines</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for machine in machines %}
+                <tr>
+                    <td>{{ machine.id }}</td>
+                    <td>{{ machine.nom }}</td>
+                    <td>
+                        <a href="{{ path('app_machine_show', {'id': machine.id}) }}">Show</a>
+                        {% if is_granted('ROLE_AGRICULTEUR') %}
+                            <a href="{{ path('app_machine_edit', {'id': machine.id}) }}">Edit</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if is_granted('ROLE_AGRICULTEUR') %}
+        <a href="{{ path('app_machine_new') }}">Create New</a>
+    {% endif %}
+{% endblock %}

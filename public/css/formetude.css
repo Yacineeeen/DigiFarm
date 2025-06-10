@@ -1,0 +1,127 @@
+/* Formulaire */
+:root3 {
+    --agriox-font: 'DM Sans', sans-serif;
+    --agriox-font-2: 'Averia Sans Libre', cursive;
+    --agriox-font-3: 'Shadows Into Light', cursive;
+    --agriox-base: #f1cf69;
+    --agriox-base-rgb: 241, 207, 105;
+    --agriox-primary: #334b35;
+    --agriox-primary-rgb: 51, 75, 53;
+    --agriox-secondary: #6d8c54;
+    --agriox-secondary-rgb: 109, 140, 84;
+    --agriox-color-1: #687469;
+    --agriox-color-1-rgb: 104, 116, 105;
+  }
+form {
+    background-color: rgba(var(--agriox-primary-rgb), 0.1); /* Fond léger avec transparence */
+    padding: 20px;
+    border-radius: 8px; /* Coins légèrement arrondis */
+    margin: 20px auto;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour le formulaire */
+}
+
+form h2 {
+    font-size: 20px;
+    color: var(--agriox-primary);
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* Champs du formulaire */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid rgba(var(--agriox-primary-rgb), 0.3);
+    border-radius: 4px; /* Coins arrondis */
+    margin-bottom: 15px; /* Espacement entre les champs */
+    background-color: #ffffff; /* Fond blanc */
+    color: var(--agriox-primary);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    border-color: var(--agriox-secondary); /* Bordure secondaire au focus */
+    outline: none;
+}
+
+/* Étiquettes de champs */
+label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--agriox-primary);
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Bouton de soumission */
+button[type="submit"] {
+    background-color: var(--agriox-primary);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Effet au survol du bouton */
+button[type="submit"]:hover {
+    background-color: var(--agriox-secondary); /* Changement de couleur au survol */
+    transform: translateY(-2px); /* Effet de levée */
+}
+
+/* Message de validation ou d'erreur */
+.form-message {
+    font-size: 14px;
+    text-align: center;
+    color: var(--agriox-base);
+    margin-top: 10px;
+}
+
+/* Lien d'inscription ou autre texte d'action */
+.form-action-link {
+    font-size: 14px;
+    color: var(--agriox-secondary);
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+.form-action-link:hover {
+    color: var(--agriox-primary);
+    text-decoration: underline;
+}
+/* Bouton général */
+button.btn, a.button {
+    background-color: var(--agriox-primary);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Effet au survol */
+button.btn:hover, a.button:hover {
+    background-color: var(--agriox-secondary);
+    transform: translateY(-2px);
+}

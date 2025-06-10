@@ -1,0 +1,69 @@
+
+{% extends 'base_front_etude.html.twig' %}
+
+
+{% block title %}front{% endblock %}
+{% block body %}
+
+<section class="features-one clearfix">
+    <div class="container">
+        <div class="row">
+            <!-- Start Single Features One -->
+            <div class="col-xl-4 col-lg-4 wow fadeInUp animated animated">
+                <div class="features-one__single">
+                    <div class="features-one__single-img">
+                        <img src="{{ asset('assets/images/feauters/features-v1-img1.jpg') }}" alt="">
+                        <div class="features-one__single-title text-center">
+                            <h3><a href="{{ path('app_etude_new', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}">
+Launch a study  <br> On your agricultural culture</a></h3>
+                        </div>
+                    </div>
+                    <a href="{{ path('app_etude_new', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}" class="features-one__single__more">
+    <span class="icon-right-arrow-2"></span>
+</a>
+
+                </div>
+            </div>
+            <!-- End Single Features One -->
+
+            <!-- Start Single Features One -->
+            <div class="col-xl-4 col-lg-4 wow fadeInUp animated animated">
+                <div class="features-one__single">
+                    <div class="features-one__single-img">
+                        <img src="{{ asset('assets/images/feauters/features-v1-img2.jpg') }}" alt="">
+                        <div class="features-one__single-title text-center">
+                            <h3><a href="{{ path('app_culture_new', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}" >
+Add a new <br> Agricole Culture</a></h3>
+                        </div>
+                    </div>
+                    <a href="{{ path('app_culture_new', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}" class="features-one__single__more">
+                        <span class="icon-right-arrow-2"></span>
+                    </a>
+                </div>
+            </div>
+            <!-- End Single Features One -->
+
+            <!-- Start Single Features One -->
+            <div class="col-xl-4 col-lg-4 wow fadeInUp animated animated">
+                <div class="features-one__single style2 text-center">
+                    <div class="features-one__single-bg" style="background-image: url(assets/images/backgrounds/features-one-single-bg.png);"></div>
+                    <div class="features-one__single-img">
+                        <img src="{{ asset('assets/images/feauters/features-v1-img3.jpg') }}" alt="">
+                    </div>
+                    <div class="features-one__single-title text-center">
+                        <h3><a href="{{ path('app_culture_index', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}">Agriculture <br> Cultures</a></h3>
+                    </div>
+                    <div class="button">
+                        <a href="{{ path('app_culture_index', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}" class="thm-btn">See Your Cultures</a>
+                    </div>
+                    <br>
+                    <div class="button">
+                        <a href="{{ path('app_etude_index', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}" class="thm-btn">See Your Etudes</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Single Features One -->
+        </div>
+    </div>
+</section>
+{% endblock %}

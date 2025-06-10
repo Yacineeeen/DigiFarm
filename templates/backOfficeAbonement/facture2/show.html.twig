@@ -1,0 +1,49 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Facture{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="card shadow-lg p-4">
+        <h1 class="text-center text-primary mb-4">Facture</h1>
+
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th class="bg-light">Id</th>
+                    <td>{{ facture.id }}</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Prixt</th>
+                    <td>{{ facture.prixt }}</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Cin</th>
+                    <td>{{ facture.cin }}</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Email</th>
+                    <td>{{ facture.email }}</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Datef</th>
+                    <td>{{ facture.datef ? facture.datef|date('Y-m-d') : '' }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <a href="{{ path('app_facture2_index') }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Retour à la liste
+            </a>
+            <a href="{{ path('app_facture2_edit', {'id': facture.id}) }}" class="btn btn-warning">
+                <i class="fas fa-edit"></i> Modifier
+            </a>
+        </div>
+
+        <div class="d-flex justify-content-center mt-3">
+            {{ include('backOfficeAbonement/facture2/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}})}}
+    
+<div >
+    {{ form_label(form.nom , "nom ") }}
+    {{ form_widget(form.nom) }}
+    {{ form_errors(form.nom) }}
+</div>
+
+<div >
+    {{ form_label(form.prenom , "prenom" ) }}
+    {{ form_widget(form.prenom) }}
+    {{ form_errors(form.prenom) }}
+</div>
+
+<div >
+    {{ form_label(form.tel, "numero de telephone ") }}
+    {{ form_widget(form.tel) }}
+    {{ form_errors(form.tel) }}
+</div>
+
+<div >
+    {{ form_label(form.email , "email " ) }}
+    {{ form_widget(form.email) }}
+    {{ form_errors(form.email) }}
+</div>
+
+<div >
+    {{ form_label(form.zone , " zone " ) }}
+    {{ form_widget(form.zone) }}
+    {{ form_errors(form.zone) }}
+</div>
+
+<div >
+    {{ form_label(form.dispo  , " disponibilité ") }}
+    <div>
+        {{ form_widget(form.dispo) }}
+    </div>
+    {{ form_errors(form.dispo) }}
+</div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <button type="submit" class="btn">{{ button_label|default('Save') }}</button>
+    </div>
+{{ form_end(form) }}

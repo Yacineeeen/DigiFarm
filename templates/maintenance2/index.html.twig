@@ -1,0 +1,64 @@
+{% extends 'base_back_etude.html.twig' %}
+
+
+
+{% block title %}Maintenance Index{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="container mt-4 pt-5">
+        <h1 class="text-center text-primary mb-4">Maintenance</h1>
+        <div class="card shadow-lg p-4">
+            <table class="table table-bordered table-striped">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Date Entretien</th>
+                        <th>Coût</th>
+                        <th>Température</th>
+                        <th>Humidité</th>
+                        <th>Consommation Carburant</th>
+                        <th>Consommation Energie</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for maintenance in maintenances %}
+                    <tr>
+                        <td>{{ maintenance.id }}</td>
+                        <td>{{ maintenance.dateEntretien ? maintenance.dateEntretien|date('Y-m-d') : '' }}</td>
+                        <td>{{ maintenance.cout }}</td>
+                        <td>{{ maintenance.temperature }}</td>
+                        <td>{{ maintenance.humidite }}</td>
+                        <td>{{ maintenance.consoCarburant }}</td>
+                        <td>{{ maintenance.consoEnergie }}</td>
+                        <td>{{ maintenance.Status.value }}</td>
+                        <td>
+                            <a href="{{ path('app_maintenance2_show', {'context': app.request.get('context'), 'id': maintenance.id}) }}" class="btn btn-info btn-sm">
+                                Show
+                            </a>
+                            <a href="{{ path('app_maintenance2_edit', {'context': app.request.get('context'), 'id': maintenance.id}) }}" class="btn btn-warning btn-sm">
+                                Edit
+                            </a>
+                           
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="9" class="text-center">Aucune maintenance trouvée</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="text-center mt-4">
+                <a href="{{ path('app_maintenance2_new', {'context': app.request.get('context')}) }}" class="btn btn-success">
+                    <i class="fas fa-plus"></i> Créer une nouvelle maintenance
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block body %}
+    <div class="container mt-4" style="margin-bottom:20px">
+        <h1 class="text-center mb-4 text-warning">Monitoring Records</h1>
+
+        <div class="text-center mb-4">
+            <a href="{{ path('app_animal_index') }}" class="btn btn-outline-warning btn-lg">
+                <i class="fas fa-paw me-2"></i> View Animal Directory
+            </a>
+        </div>
+
+        {% if pagination is empty %}
+            <div class="alert alert-info text-center p-4">
+                <i class="fas fa-info-circle fa-2x mb-3"></i>
+                <h4>No Monitoring Records Found</h4>
+                <p>There are currently no monitoring records in the system.</p>
+            </div>
+        {% else %}
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for suivi in pagination %}
+                    <div class="col">
+                        <div class="card h-100 shadow-sm hover-shadow bg-dark text-light">
+                            <div class="card-header bg-dark border-secondary">
+                                <h5 class="card-title mb-0 text-center">Record #{{ suivi.id }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between bg-dark text-light border-secondary">
+                                        <span><i class="fas fa-thermometer-half me-2"></i> Temperature</span>
+                                        <span class="text-light">{{ suivi.temperature }}°C</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between bg-dark text-light border-secondary">
+                                        <span><i class="fas fa-heartbeat me-2"></i> Heart Rate</span>
+                                        <span class="text-light">{{ suivi.rythmeCardiaque }} BPM</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between bg-dark text-light border-secondary">
+                                        <span><i class="fas fa-notes-medical me-2"></i> Status</span>
+                                        <span class="text-light">{{ suivi.etat }}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between bg-dark text-light border-secondary">
+                                        <span><i class="fas fa-user-md me-2"></i> Veterinarian</span>
+                                        <span class="text-light">{{ suivi.veterinaire }}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between bg-dark text-light border-secondary">
+                                        <span><i class="fas fa-user me-2"></i> Client ID</span>
+                                        <span class="text-light">{{ suivi.idClient }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {# Pagination Controls #}
+            <div class="pagination mt-4 d-flex justify-content-center">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

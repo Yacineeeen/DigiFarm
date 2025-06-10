@@ -1,0 +1,43 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'container p-4 bg-dark text-white rounded mt-5'}}) }}
+
+<div class="mb-3">
+    {{ form_label(form.animal, "Animal", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.animal, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.animal, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.temperature, "Température (°C)", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.temperature, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.temperature, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.rythme_cardiaque, "Rythme cardiaque", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.rythme_cardiaque, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.rythme_cardiaque, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.etat, "État de l'animal", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.etat, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.etat, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.veterinaire, "Vétérinaire", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.veterinaire, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.veterinaire, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.id_client, "ID du client", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.id_client, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.id_client, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="text-center mt-3">
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+</div>
+
+{{ form_end(form) }}

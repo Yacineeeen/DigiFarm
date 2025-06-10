@@ -1,0 +1,40 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block title %}Facture{% endblock %}
+
+{% block body %}
+    <h1>Facture</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ facture.id }}</td>
+            </tr>
+            <tr>
+                <th>Prixt</th>
+                <td>{{ facture.prixt }}</td>
+            </tr>
+            <tr>
+                <th>Cin</th>
+                <td>{{ facture.cin }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ facture.email }}</td>
+            </tr>
+            <tr>
+                <th>Datef</th>
+                <td>{{ facture.datef ? facture.datef|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_facture_index') }}">back to list</a>
+
+    <a href="{{ path('app_facture_edit', {'id': facture.id}) }}">edit</a>
+
+
+
+    {{ include('frontOfficeAbonement/facture/_delete_form.html.twig') }}
+{% endblock %}

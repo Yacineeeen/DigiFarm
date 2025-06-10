@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement Réussi - AGRIOX{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="payment-success-container">
+        <div class="payment-card">
+            <div class="payment-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1 class="payment-title">Merci pour votre Achat ! 🌾</h1>
+            <p class="payment-text">
+                Votre paiement a été effectué avec succès. Nous vous remercions pour votre confiance.  
+            </p>
+            <p class="payment-text">
+                Un email de confirmation vous a été envoyé. Si vous avez des questions, n'hésitez pas à nous contacter à  
+                <a href="mailto:contact@agrix.com" class="payment-link">contact@agrix.com</a>.
+            </p>
+            <p class="payment-text">🌿 Bonne récolte et à bientôt sur notre ferme ! 🚜</p>
+            
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .payment-success-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            background-color: #f0f4f7;
+            padding: 20px;
+        }
+
+        .payment-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .payment-icon {
+            font-size: 60px;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        .payment-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .payment-text {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        .payment-link {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .payment-link:hover {
+            text-decoration: underline;
+        }
+
+        .payment-btn {
+            margin-top: 25px;
+            background-color: #28a745;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .payment-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+{% endblock %}

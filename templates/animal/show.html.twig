@@ -1,0 +1,39 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block body %}
+    <h1>Animal</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ animal.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ animal.nom }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ animal.type }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ animal.age }}</td>
+            </tr>
+            <tr>
+                <th>Poids</th>
+                <td>{{ animal.poids }}</td>
+            </tr>
+            <tr>
+                <th>Race</th>
+                <td>{{ animal.race }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_animal_index') }}">back to list</a>
+
+
+    {{ include('animal/_delete_form.html.twig') }}
+{% endblock %}

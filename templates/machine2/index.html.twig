@@ -1,0 +1,59 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Machine2 Index{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="container mt-4 pt-5">
+        <h1 class="text-center text-primary mb-4">Machines</h1>
+        <div class="card shadow-lg p-4">
+            <table class="table table-bordered table-striped">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Type</th>
+                        <th>Date Achat</th>
+                        <th>Etat</th>
+                        <th>Etat Prédictif</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for machine in machines %}
+                    <tr>
+                        <td>{{ machine.id }}</td>
+                        <td>{{ machine.nom }}</td>
+                        <td>{{ machine.type }}</td>
+                        <td>{{ machine.dateAchat ? machine.dateAchat|date('Y-m-d') : '' }}</td>
+                        <td>{{ machine.etat.value }}</td>
+                        <td>{{ machine.etatPred }}</td>
+                        <td>
+                            <a href="{{ path('app_machine2_show', {'context': app.request.get('context'), 'id': machine.id}) }}" class="btn btn-info btn-sm">
+                                Show
+                            </a>
+                            <a href="{{ path('app_machine2_edit', {'context': app.request.get('context'), 'id': machine.id}) }}" class="btn btn-warning btn-sm">
+                                Edit
+                            </a>
+                            <form method="post" action="{{ path('app_machine2_delete', {'context': app.request.get('context'), 'id': machine.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');" style="display:inline;">
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center">Aucune machine trouvée</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="text-center mt-4">
+                <a href="{{ path('app_machine2_new', {'context': app.request.get('context')}) }}" class="btn btn-success">
+                    <i class="fas fa-plus"></i> Créer une nouvelle machine
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

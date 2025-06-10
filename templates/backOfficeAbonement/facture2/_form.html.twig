@@ -1,0 +1,25 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'container p-4 bg-dark text-white rounded mt-5'}}) }}
+
+<div class="mb-3">
+    {{ form_label(form.cin, "CIN", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.cin, {'attr': {'class': 'form-control', 'pattern': '[0-9]{8}', 'title': 'Le CIN doit contenir exactement 8 chiffres.'}}) }}
+    {{ form_errors(form.cin, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.email, "Email", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'type': 'email', 'placeholder': 'exemple@email.com'}}) }}
+    {{ form_errors(form.email, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.prixt, "Prix Total", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.prixt, {'attr': {'class': 'form-control', 'min': '0', 'step': '0.01'}}) }}
+    {{ form_errors(form.prixt, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="text-center mt-3">
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+
+{{ form_end(form) }}

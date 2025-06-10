@@ -1,0 +1,41 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block title %}Liste des abonnements{% endblock %}
+
+{% block body %}
+    <h1>Liste des abonnements</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Numéro</th>
+                <th>Type d'abonnement</th>
+                <th>Durée (mois)</th>
+                <th>Prix total ($)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abonnement in abonnements %}
+            <tr>
+                <td>{{ abonnement.id }}</td>
+                <td>{{ abonnement.numero }}</td>
+                <td>{{ abonnement.typeAbb|capitalize }}</td>
+                <td>{{ abonnement.dureeAbb }}</td>
+                <td>{{ abonnement.prix }}</td>
+                <td>
+                    <a href="{{ path('app_abonnement_show', {'id': abonnement.id}) }}" class="btn btn-primary btn-sm">Voir</a>
+                    <a href="{{ path('app_abonnement_edit', {'id': abonnement.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun abonnement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_abonnement_new') }}" class="btn btn-success">Créer un nouvel abonnement</a>
+{% endblock %}

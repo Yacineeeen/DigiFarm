@@ -1,0 +1,115 @@
+
+{% extends 'base_front_etude.html.twig' %}
+
+
+{% block title %}front{% endblock %}
+{% block body %}
+
+
+ <!--About One Start-->
+        <section class="about-one">
+            <div class="about-one__bg wow slideInRight" data-wow-delay="100ms" data-wow-duration="2500ms">
+                <img class="float-bob-y" src="{{ asset('assets/images/backgrounds/about-v1-bg.png') }}" alt="">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <!--Start About One Left-->
+                    <div class="col-xl-6">
+                        <div class="about-one__left">
+                            <div class="about-one__left-img">
+                                <div class="about-one__left-img-inner">
+                                    <img src="{{ asset('assets/images/about/about-v1-img1.jpg') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="about-one__left-overlay wow slideInLeft" data-wow-delay="100ms" data-wow-duration="1500ms">
+                                <div class="icon">
+                                    <span class="icon-investment"></span>
+                                </div>
+                                <div class="title">
+                                    <h2><span class="odometer" data-count="87600">00</span></h2>
+                                    <p>Successfully Project Completed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End About One Left-->
+
+                    <!--Start About One Content-->
+                    <div class="col-xl-6">
+                        <div class="about-one__content">
+                            <div class="sec-title">
+                                <div class="icon">
+                                    <img src="{{ asset('assets/images/resources/sec-title-icon1.png') }}" alt="">
+                                </div>
+                                <span class="sec-title__tagline">Our introduction</span>
+                                <h2 class="sec-title__title">Pure Agriculture and <br>Organic Form</h2>
+                            </div>
+
+                            <h2 class="about-one__content-title">We’re Leader in Agriculture Market</h2>
+                            <p class="about-one__content-text">There are many variations of passages of available but
+                                the majority have suffered alteration in some form, by injected humou or randomised
+                                words even slightly believable.</p>
+                            <ul class="about-one__content-list">
+                                <li>
+                                    <div class="icon">
+                                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>Lorem Ipsum is not simply random text</p>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="icon">
+                                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>If you are going to use a passage</p>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="icon">
+                                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>Making this the first true generator on the Internet</p>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="icon">
+                                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>Various versions have evolved over the years</p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="about-one__content-video-box">
+                                <div class="about-one__content-video-box-img-wrapper">
+                                    <div class="about-one__content-video-box-img">
+                                        <img src="{{ asset('assets/images/resources/about-v1-video-img.jpg') }}" alt="">
+                                        <div class="icon">
+                                            <a class="video-popup wow zoomIn animated animated animated" data-wow-delay="300ms" data-wow-duration="1500ms" title=" Video" href="https://www.youtube.com/watch?v=8DP4NgupAhI">
+                                                <span class="icon-play-button-1"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div><!-- /.about-one__content-video-box-img-wrapper -->
+                                <div class="about-one__content-video-box-title">
+                                    <p>Watch our video</p>
+                                    <h3>Tips for Ripening your Fruits</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End About One Content-->
+                </div>
+            </div>
+        </section>
+        <!--About One End-->
+
+
+        {% endblock %}

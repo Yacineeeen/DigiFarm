@@ -1,0 +1,17 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block body %}
+    <div class="form-box">
+        <div class="form">
+            <h1 class="title">Ajouter un compte</h1>
+            {{ include('backOfficeUser/_form.html.twig') }}
+        </div>
+        <!-- Retour à la liste -->
+        <div class="form-section">
+            <a href="{{ path('app_user_index') }}">Retour à la liste</a>
+        </div>
+    </div>
+    
+{% endblock %}
+
+

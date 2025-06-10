@@ -1,0 +1,38 @@
+{% extends 'base_front_etude.html.twig' %}
+{% block title %}Détails de l'abonnement{% endblock %}
+
+{% block body %}
+    <h1>Détails de l'abonnement</h1>
+
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <td>{{ abonnement.id }}</td>
+        </tr>
+        <tr>
+            <th>Numéro</th>
+            <td>{{ abonnement.numero }}</td>
+        </tr>
+        <tr>
+            <th>Type d'abonnement</th>
+            <td>{{ abonnement.typeAbb|capitalize }}</td>
+        </tr>
+        <tr>
+            <th>Durée</th>
+            <td>{{ abonnement.dureeAbb }} mois</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{ abonnement.prix }} $</td>
+        </tr>
+    </table>
+<center>
+    <a href="{{ path('app_abonnement_edit', {'id': abonnement.id}) }}" class="btn btn-warning">Modifier</a>
+    <a href="{{ path('app_facture_new', {'abonnementId': abonnement.id}) }}" class="btn btn-success">
+        Générer une facture
+    </a>
+   </center> 
+    
+
+    <center>   <a class="btn btn-secondary"> {{ include('frontOfficeAbonement/abonnement/_delete_form.html.twig') }}</a> </center> 
+{% endblock %}

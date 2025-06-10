@@ -1,0 +1,31 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'container p-4 bg-dark text-white rounded mt-5'}}) }}
+
+<div class="mb-3">
+    {{ form_label(form.nom, "Nom", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.nom, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.num_tel, "Numéro de téléphone", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.num_tel, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.num_tel, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.email, "Email", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.email, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.adresse_cabine, "Adresse du cabinet", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.adresse_cabine, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.adresse_cabine, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="text-center mt-3">
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+</div>
+
+{{ form_end(form) }}

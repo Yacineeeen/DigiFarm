@@ -1,0 +1,45 @@
+{% extends 'base_front_etude.html.twig' %}
+
+
+{% block title %}List Expert{% endblock %}
+{% block body %}
+    <h1>Expert index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Tel</th>
+                <th>Email</th>
+                <th>Zone</th>
+                <th>Dispo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for expert in experts %}
+            <tr>
+              
+                <td>{{ expert.nom }}</td>
+                <td>{{ expert.prenom }}</td>
+                <td>{{ expert.tel }}</td>
+                <td>{{ expert.email }}</td>
+                <td>{{ expert.zone }}</td>
+                <td>{{ expert.dispo.value }}</td>
+                <td>
+    <a href="{{ path('app_expert_show', {'context': app.request.get('context'),'id': expert.id}) }}" class="button">Show</a>
+</td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no Experts found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<br>
+       <center>  <a href="{{ path('app_etude_index' ,{'context': app.request.get('context')}) }}"class="button">Back to Etude</a> </center>
+
+{% endblock %}

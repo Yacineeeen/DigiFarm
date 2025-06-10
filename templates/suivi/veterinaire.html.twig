@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suivis du vétérinaire{% endblock %}
+
+{% block body %}
+    <h1>Suivis pour {{ veterinaire.nom }}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Température (°C)</th>
+                <th>Rythme Cardiaque (BPM)</th>
+                <th>État</th>
+                <th>Client ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for suivi in suivis %}
+                <tr>
+                    <td>{{ suivi.id }}</td>
+                    <td>{{ suivi.temperature }}</td>
+                    <td>{{ suivi.rythmeCardiaque }}</td>
+                    <td>{{ suivi.etat }}</td>
+                    <td>{{ suivi.idClient }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="mt-3">
+        <a href="{{ path('app_send_email_veterinaire', {'id': veterinaire.id}) }}" class="btn btn-success">
+            <i class="fas fa-envelope"></i> Envoyer par Email
+        </a>
+    </div>
+{% endblock %}

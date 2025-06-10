@@ -1,0 +1,25 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+<div>
+    {{ form_label(form.cin, "CIN") }}
+    {{ form_widget(form.cin, {'attr': {'pattern': '[0-9]{8}', 'title': 'Le CIN doit contenir exactement 8 chiffres.'}}) }}
+    {{ form_errors(form.cin) }}
+</div>
+
+<div>
+    {{ form_label(form.email, "Email") }}
+    {{ form_widget(form.email, {'attr': {'type': 'email', 'placeholder': 'exemple@email.com'}}) }}
+    {{ form_errors(form.email) }}
+</div>
+
+<div>
+    {{ form_label(form.prixt, "Prix Total") }}
+    {{ form_widget(form.prixt, {'attr': {'min': '0', 'step': '0.01'}}) }}
+    {{ form_errors(form.prixt) }}
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <button type="submit" class="btn">{{ button_label|default('Save') }}</button>
+</div>
+
+{{ form_end(form) }}

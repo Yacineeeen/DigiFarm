@@ -1,0 +1,88 @@
+/* Card Style */
+.card-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 30px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-container:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Table inside the card */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Remove extra spacing between table cells */
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0; /* Light grey line between rows */
+}
+
+th {
+    font-weight: bold;
+    background-color: #f4f4f4;
+    color: #6d8c54; /* Primary color */
+}
+
+td {
+    background-color: #fafafa;
+}
+
+/* Table styling for even/odd rows */
+tbody tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1; /* Hover effect on rows */
+}
+
+/* Button styles */
+button, a.button {
+    background-color: var(--agriox-primary); /* Primary color */
+    color: #fff; /* White text */
+    font-size: 12px; /* Smaller font size */
+    font-weight: 500;
+    padding: 6px 12px; /* Reduced padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    border-radius: 4px; /* Slightly rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Button hover effect */
+button:hover, a.button:hover {
+    background-color: var(--agriox-secondary); /* Secondary color on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .card-container {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}

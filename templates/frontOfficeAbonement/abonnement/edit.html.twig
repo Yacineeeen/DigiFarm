@@ -1,0 +1,17 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block title %}Edit Abonnement{% endblock %}
+
+{% block body %}
+    <h1>Edit Abonnement</h1>
+
+    <!-- Formulaire d'édition de l'abonnement -->
+    {{ include('frontOfficeAbonement/abonnement/_form.html.twig', {'button_label': 'Update'}) }}
+
+  
+
+    <!-- Formulaire de suppression -->
+    <div style="text-align: center; margin-top: 20px;">
+        {{ include('frontOfficeAbonement/abonnement/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

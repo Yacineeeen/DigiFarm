@@ -1,0 +1,35 @@
+parameters:
+    # Tu peux ajouter des paramètres ici si nécessaire
+        STRIPE_SECRET_KEY: '%env(STRIPE_SECRET_KEY)%'
+        uploads_directory: '%env(resolve:UPLOADS_DIRECTORY)%'
+
+
+
+services:
+     
+    # Configuration par défaut pour les services dans ce fichier
+    _defaults:
+        autowire: true      # Injection automatique des dépendances dans tes services
+        autoconfigure: true # Inscrit automatiquement tes services comme commandes, abonnés aux événements, etc.
+
+    # Déclaration de services pour les classes dans le dossier src/
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+   
+    App\Command\:
+        resource: '../src/Command'
+        tags: ['console.command']
+    
+    App\Service\PdfGeneratorService: ~
+
+    App\EventSubscriber\CalendarSubscriber:
+        arguments:
+            $cultureRepository: '@App\Repository\CultureRepository'
+            $requestStack: '@Symfony\Component\HttpFoundation\RequestStack'
+
+    

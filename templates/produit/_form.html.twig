@@ -1,0 +1,45 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'container p-4'}}) }}
+
+<div class="mb-3">
+    {{ form_label(form.type , "Type de Produit", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.type, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.reference , "Référence", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.reference, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.reference, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.nom , "Nom", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.nom, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.prix , "prix", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.prix, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.description , "Description", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.description, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.stock , "Stock", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.stock, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.stock, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+
+
+<div class="text-center mt-3">
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+
+{{ form_end(form) }}

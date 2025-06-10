@@ -1,0 +1,43 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+<div>
+    {{ form_label(form.animal, "Animal") }}
+    {{ form_widget(form.animal) }}
+    {{ form_errors(form.animal) }}
+</div>
+
+<div>
+    {{ form_label(form.temperature, "Température (°C)") }}
+    {{ form_widget(form.temperature) }}
+    {{ form_errors(form.temperature) }}
+</div>
+
+<div>
+    {{ form_label(form.rythme_cardiaque, "Rythme cardiaque") }}
+    {{ form_widget(form.rythme_cardiaque) }}
+    {{ form_errors(form.rythme_cardiaque) }}
+</div>
+
+<div>
+    {{ form_label(form.etat, "État de l'animal") }}
+    {{ form_widget(form.etat) }}
+    {{ form_errors(form.etat) }}
+</div>
+
+<div>
+    {{ form_label(form.veterinaire, "Vétérinaire") }}
+    {{ form_widget(form.veterinaire) }}
+    {{ form_errors(form.veterinaire) }}
+</div>
+
+<div>
+    {{ form_label(form.id_client, "ID du client") }}
+    {{ form_widget(form.id_client) }}
+    {{ form_errors(form.id_client) }}
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <button type="submit" class="btn">{{ button_label|default('Enregistrer') }}</button>
+</div>
+
+{{ form_end(form) }}

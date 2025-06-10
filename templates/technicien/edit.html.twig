@@ -1,0 +1,185 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Edit Technicien{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #e9f5e9; /* Light green background */
+            color: #333;
+        }
+
+        .technicien-edit {
+            margin: 40px auto;
+            padding: 30px;
+            max-width: 800px;
+            background-color: #e0f7e0;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .technicien-edit h1 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50; /* Dark blue for headings */
+            text-align: center;
+        }
+
+        /* Form Container */
+        .technicien-edit .form-container {
+            margin-bottom: 25px;
+        }
+
+        .technicien-edit .form-group {
+            margin-bottom: 20px;
+        }
+
+        .technicien-edit .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #27ae60; /* Green for labels */
+        }
+
+        .technicien-edit .form-group input,
+        .technicien-edit .form-group select,
+        .technicien-edit .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .technicien-edit .form-group input:focus,
+        .technicien-edit .form-group select:focus,
+        .technicien-edit .form-group textarea:focus {
+            border-color: #27ae60; /* Green border on focus */
+            outline: none;
+        }
+
+        /* Buttons */
+        .technicien-edit .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end; /* Align buttons to the right */
+            margin-top: 25px;
+        }
+
+        .technicien-edit .btn {
+            padding: 12px 25px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 160px; /* Consistent button width */
+        }
+
+        .technicien-edit .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .technicien-edit .btn-primary {
+            background-color: #27ae60; /* Green for primary actions */
+        }
+
+        .technicien-edit .btn-primary:hover {
+            background-color: #219653; /* Darker green on hover */
+        }
+
+        .technicien-edit .btn-secondary {
+            background-color: #95a5a6; /* Gray for secondary actions */
+        }
+
+        .technicien-edit .btn-secondary:hover {
+            background-color: #7f8c8d; /* Darker gray on hover */
+        }
+
+        .technicien-edit .btn-danger {
+            background-color: #e74c3c; /* Red for delete actions */
+        }
+
+        .technicien-edit .btn-danger:hover {
+            background-color: #c0392b; /* Darker red on hover */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .technicien-edit {
+                padding: 20px;
+            }
+
+            .technicien-edit h1 {
+                font-size: 24px;
+            }
+
+            .technicien-edit .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .technicien-edit .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="technicien-edit">
+        <h1>Edit Technicien</h1>
+
+        <div class="form-container">
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'form-horizontal'}}) }}
+                {{ form_errors(form) }}
+
+                <div class="form-group">
+                    {{ form_label(form.name, "Name") }}
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.name) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.prenom, "First Name") }}
+                    {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.prenom) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.specialite, "Specialty") }}
+                    {{ form_widget(form.specialite, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.specialite) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.email, "Email") }}
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.email) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.telephone, "Telephone") }}
+                    {{ form_widget(form.telephone, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.telephone) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.localisation, "Location") }}
+                    {{ form_widget(form.localisation, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.localisation) }}
+                </div>
+
+                <button class="btn btn-primary">{{ button_label|default('Update') }}</button>
+            {{ form_end(form) }}
+        </div>
+
+        <div class="actions">
+            <a class="btn btn-secondary" href="{{ path('app_technicien_index') }}">Back to list</a>
+            {{ include('technicien/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

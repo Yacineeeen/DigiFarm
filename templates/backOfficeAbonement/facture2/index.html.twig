@@ -1,0 +1,49 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Facture index{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="card shadow-lg p-4">
+        <h1 class="text-center text-primary mb-4">Factures</h1>
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-light">
+                <tr>
+                    <th>Id</th>
+                    <th>Prixt</th>
+                    <th>Cin</th>
+                    <th>Email</th>
+                    <th>Datef</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for facture in factures %}
+                <tr>
+                    <td>{{ facture.id }}</td>
+                    <td>{{ facture.prixt }}</td>
+                    <td>{{ facture.cin }}</td>
+                    <td>{{ facture.email }}</td>
+                    <td>{{ facture.datef ? facture.datef|date('Y-m-d') : '' }}</td>
+                    <td>
+                        <a href="{{ path('app_facture2_show', {'id': facture.id}) }}" class="btn btn-info btn-sm">
+                            Show
+                        </a>
+                        <a href="{{ path('app_facture2_edit', {'id': facture.id}) }}" class="btn btn-warning btn-sm">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6" class="text-center">Aucun facture trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+       
+    </div>
+</div>
+{% endblock %}

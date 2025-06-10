@@ -1,0 +1,13 @@
+{% extends 'base_front_etude.html.twig' %}
+
+
+{% block body %}
+    <h1>Edit veterinaire</h1>
+
+    {{ include('frontOfficeAnimal/veterinaire/_form.html.twig', {'button_label': 'Update'}) }}
+
+   <center> <a href="{{ path('app_veterinaire_index') }}" class="button">back to list</a></center>
+
+    {{ include('frontOfficeAnimal/veterinaire/_delete_form.html.twig') }}
+{% endblock %}
+

@@ -1,0 +1,12 @@
+{% extends 'base_front_etude.html.twig' %}
+
+
+{% block title %}New Culture{% endblock %}
+
+{% block body %}
+    <h1>Create new Culture</h1>
+
+    {{ include('frontOfficeEtude/culture/_form.html.twig') }}
+
+   <center>  <a  href="{{ path('front_page') }}"  class="button">back to list</a> </center>
+{% endblock %}

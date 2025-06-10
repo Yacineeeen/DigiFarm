@@ -1,0 +1,80 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Modifier un Produit{% endblock %}
+
+{% block body %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh; margin-top: 70px;">
+    <div class="card shadow-lg p-3 bg-dark text-white" style="width: 35%; max-width: 450px;">  {# Réduction de la taille #}
+
+        <!-- ✅ Titre bien visible et espacé -->
+        <div class="card-header bg-primary text-center py-1">
+            <h4 class="mb-0 text-white" style="font-size: 18px;">Modifier un Produit</h4> {# Titre plus petit #}
+        </div>
+
+        <div class="card-body p-2">
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+            <!-- ✅ Champs ultra compacts -->
+            <div class="mb-1">
+                {{ form_label(form.type, "Type", {'label_attr': {'class': 'form-label small'}}) }}
+                {{ form_widget(form.type, {'attr': {'class': 'form-control form-control-sm bg-secondary text-white'}}) }}
+            </div>
+
+            <div class="mb-1">
+                {{ form_label(form.reference, "Référence", {'label_attr': {'class': 'form-label small'}}) }}
+                {{ form_widget(form.reference, {'attr': {'class': 'form-control form-control-sm bg-secondary text-white'}}) }}
+            </div>
+
+            <div class="mb-1">
+                {{ form_label(form.nom, "Nom", {'label_attr': {'class': 'form-label small'}}) }}
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control form-control-sm bg-secondary text-white'}}) }}
+            </div>
+
+            <div class="mb-1">
+                {{ form_label(form.prix, "Prix", {'label_attr': {'class': 'form-label small'}}) }}
+                {{ form_widget(form.prix, {'attr': {'class': 'form-control form-control-sm bg-secondary text-white'}}) }}
+            </div>
+
+            <div class="mb-1">
+                {{ form_label(form.description, "Description", {'label_attr': {'class': 'form-label small'}}) }}
+                {{ form_widget(form.description, {'attr': {'class': 'form-control form-control-sm bg-secondary text-white'}}) }}
+            </div>
+
+            <div class="mb-1">
+                {{ form_label(form.stock, "Stock", {'label_attr': {'class': 'form-label small'}}) }}
+                {{ form_widget(form.stock, {'attr': {'class': 'form-control form-control-sm bg-secondary text-white'}}) }}
+            </div>
+
+            <!-- ✅ Champ image réduit -->
+            <div class="mb-1">
+                {{ form_label(form.imageFile, "Image", {'label_attr': {'class': 'form-label small'}}) }}
+                {{ form_widget(form.imageFile, {'attr': {'class': 'form-control form-control-sm bg-secondary text-white'}}) }}
+            </div>
+
+            <!-- ✅ Aperçu image en petit format -->
+            {% if produit.image %}
+                <div class="mb-1 text-center">
+                    <img src="{{ asset('uploads/' ~ produit.image) }}" alt="Image du produit" class="img-fluid rounded" style="max-width: 80px;">
+                </div>
+            {% endif %}
+
+            <!-- ✅ Boutons d'action réduits et alignés -->
+            <div class="text-center mt-2">
+                <button type="submit" class="btn btn-success btn-sm px-3">
+                    <i class="fas fa-save"></i> Enregistrer
+                </button>
+                <a href="{{ path('app_produit_gestion') }}" class="btn btn-secondary btn-sm px-3">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </a>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+
+        <!-- ✅ Bouton de suppression plus discret -->
+        <div class="text-center mt-2">
+            {{ include('produit/_delete_form.html.twig', { 'class': 'btn btn-danger btn-sm px-3' }) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base_front_etude.html.twig' %}
+
+
+{% block body %}
+    <h1>Suivi index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Temperature</th>
+                <th>Rythme_cardiaque</th>
+                <th>Etat</th>
+                <th>Veterinaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for suivi in suivis %}
+            <tr>
+                <td>{{ suivi.id }}</td>
+                <td>{{ suivi.temperature }}</td>
+                <td>{{ suivi.rythmeCardiaque }}</td>
+                <td>{{ suivi.etat }}</td>
+                <td>{{ suivi.veterinaire.id }}</td>
+                <td>
+                    <a href="{{ path('app_suivi_show', {'id': suivi.id}) }}"  class="button">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ <center>  <a href="{{ path('front_animal_page') }}" class="button">Back</a></center>
+   <center> <a href="{{ path('app_suivi_new') }}" class="button">Create new</a><center>
+{% endblock %}

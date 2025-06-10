@@ -1,0 +1,40 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block title %}📅 Calendrier des Cultures {% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">📅 Calendrier des Cultures</h2>
+    <div id="calendar-holder"></div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar-holder');
+            if (!calendarEl) {
+                console.error("❌ ERROR: Calendar div not found!");
+                return;
+            }
+
+            // Load events directly from Twig variable
+            var events = {{ events|raw }};
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'fr',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: events, // Pass events directly
+            });
+
+            calendar.render();
+        });
+    </script>
+{% endblock %}

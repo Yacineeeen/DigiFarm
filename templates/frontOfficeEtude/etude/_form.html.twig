@@ -1,0 +1,122 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block title %}🌾 Nouvelle Étude Agricole {% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+        <h2 class="text-center mb-4">🌱 Lancer une Nouvelle Étude</h2>
+
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'needs-validation'}}) }}
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label fw-bold">📅 Date de récolte:</label>
+                {{ form_widget(form.date_r, {'attr': {'class': 'form-control'}}) }}
+                <div class="text-danger">{{ form_errors(form.date_r) }}</div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label fw-bold">🌾 Nom de la culture:</label>
+                {{ form_widget(form.culture, {'attr': {'class': 'form-select'}}) }}
+                <div class="text-danger">{{ form_errors(form.culture) }}</div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label fw-bold">👨‍🌾 Nom de l'expert:</label>
+                {{ form_widget(form.expert, {'attr': {'class': 'form-select'}}) }}
+                <div class="text-danger">{{ form_errors(form.expert) }}</div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label fw-bold">☀️ Climat:</label>
+                {{ form_widget(form.climat, {'attr': {'class': 'form-select'}}) }}
+                <div class="text-danger">{{ form_errors(form.climat) }}</div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label fw-bold">🏜️ Type du sol:</label>
+                {{ form_widget(form.type_sol, {'attr': {'class': 'form-select'}}) }}
+                <div class="text-danger">{{ form_errors(form.type_sol) }}</div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label fw-bold">💧 Irrigation:</label>
+                <div class="form-check">
+                    {{ form_widget(form.irrigation, {'attr': {'class': 'form-check-input'}}) }}
+                    <label class="form-check-label">Oui</label>
+                </div>
+                <div class="text-danger">{{ form_errors(form.irrigation) }}</div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label fw-bold">🌱 Fertilisation:</label>
+                <div class="form-check">
+                    {{ form_widget(form.fertilisation, {'attr': {'class': 'form-check-input'}}) }}
+                    <label class="form-check-label">Oui</label>
+                </div>
+                <div class="text-danger">{{ form_errors(form.fertilisation) }}</div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label fw-bold">💰 Prix unitaire (€):</label>
+                {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+                <div class="text-danger">{{ form_errors(form.prix) }}</div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label fw-bold">📈 Rendement:</label>
+                {{ form_widget(form.rendement, {'attr': {'class': 'form-control'}}) }}
+                <div class="text-danger">{{ form_errors(form.rendement) }}</div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label fw-bold">☔ Précipitations:</label>
+                {{ form_widget(form.precipitations, {'attr': {'class': 'form-control'}}) }}
+                <div class="text-danger">{{ form_errors(form.precipitations) }}</div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label fw-bold">👷 Main d'œuvre:</label>
+                {{ form_widget(form.main_oeuvre, {'attr': {'class': 'form-control'}}) }}
+                <div class="text-danger">{{ form_errors(form.main_oeuvre) }}</div>
+            </div>
+        </div>
+
+        <!-- 🌿 Boutons d'action -->
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-light text-success fw-bold px-4">🚜 Sauvegarder</button>
+            <a href="{{ path('app_etude_index', {'context': app.request.get('context')}) }}" class="btn btn-dark px-4">❌ Annuler</a>
+        </div>
+
+        {{ form_end(form) }}
+</div>
+
+<style>
+    /* 🌿 Custom Styling */
+    .form-control, .form-select {
+        border-radius: 10px;
+        border: 2px solid #4CAF50;
+        transition: all 0.3s;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #2E7D32;
+        box-shadow: 0 0 10px rgba(46, 125, 50, 0.5);
+    }
+
+    .btn {
+        border-radius: 20px;
+        transition: all 0.3s;
+    }
+
+    .btn:hover {
+        transform: scale(1.05);
+    }
+
+    .text-danger {
+        font-size: 0.9em;
+        font-weight: bold;
+    }
+</style>
+
+{% endblock %}

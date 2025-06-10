@@ -1,0 +1,10 @@
+{% extends 'base_back_etude.html.twig' %}
+
+
+{% block body %}
+    <h1>Create new Suivi</h1>
+
+    {{ include('backOfficeAnimal/suivi2/_form.html.twig') }}
+
+    <a href="{{ path('app_suivi2_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,43 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'container p-4 bg-dark text-white rounded mt-5'}}) }}
+
+<div class="mb-3">
+    {{ form_label(form.nom , "Nom", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.nom, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.prenom , "Prénom", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.prenom, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.tel, "Numéro de téléphone", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.tel, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.tel, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.email , "Email", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.email, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.zone , "Zone", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.zone, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.zone, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.dispo , "Disponibilité", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.dispo, {'attr': {'class': 'form-select'}}) }}
+    {{ form_errors(form.dispo, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="text-center mt-3">
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+
+{{ form_end(form) }}

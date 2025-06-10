@@ -1,0 +1,20 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block title %}Edit Expert{% endblock %}
+
+{% block body %}
+    <h1>Edit Expert</h1>
+
+    
+    {{ include('frontOfficeEtude/expert/_form.html.twig', {'button_label': 'Update'}) }}
+
+   
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="{{ path('app_expert_index',{'context': app.request.get('context')}) }}" class="button">Back to list</a>
+    </div>
+
+    
+    <div style="text-align: center; margin-top: 20px;">
+        {{ include('frontOfficeEtude/expert/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

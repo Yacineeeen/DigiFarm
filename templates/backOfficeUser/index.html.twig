@@ -1,0 +1,81 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}List of Users{% endblock %}
+
+{% block styles %}
+<style>
+    .container {
+        max-width: 95%;
+    }
+    .card {
+        border-radius: 10px;
+    }
+    .table {
+        background-color: white;
+    }
+    .table thead {
+        background-color: #007bff;
+        color: white;
+    }
+    .table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+    .btn-sm {
+        margin-right: 5px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="text-center text-primary mb-4">List of Users</h1>
+    <div class="card shadow-lg p-4">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>AdresseMail</th>
+                        <th>Password</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.Nom }}</td>
+                        <td>{{ user.Prenom }}</td>
+                        <td>{{ user.AdresseMail }}</td>
+                        <td>{{ user.Password }}</td>
+                        <td>{{ user.Role.value }}</td>
+                        <td>
+                            <a href="{{ path('app_user_show', {'id': user.id}) }}" class="btn btn-info btn-sm">Show</a>
+                            <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <form method="post" action="{{ path('app_user_delete', {'id': user.id}) }}" 
+                                  onsubmit="return confirm('Are you sure you want to delete this user?');" 
+                                  style="display:inline;">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                                <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center">No records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Bouton Export PDF -->
+    <div class="text-center mt-3">
+        <a href="{{ path('app_user_export_pdf') }}" class="btn btn-success">Export to PDF</a>
+        <a href="{{ path('app_user_new') }}" class="btn btn-primary">Create New</a>
+    </div>
+</div>
+{% endblock %}

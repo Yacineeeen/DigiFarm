@@ -1,0 +1,105 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Statistiques des utilisateurs{% endblock %}
+
+{% block styles %}
+<style>
+    .container {
+        max-width: 95%;
+    }
+    .card {
+        border-radius: 10px;
+    }
+    .table {
+        background-color: white;
+    }
+    .table thead {
+        background-color: #007bff;
+        color: white;
+    }
+    .table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+    .btn-sm {
+        margin-right: 5px;
+    }
+    .search-form {
+        margin-bottom: 20px;
+    }
+    .search-form input {
+        padding: 5px;
+        margin-right: 10px;
+    }
+
+    /* Ajout du style spécifique pour les statistiques */
+    .stat-card {
+        border: 2px solid #ddd;
+        padding: 10px;
+        border-radius: 8px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .stat-legend {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .stat-legend div {
+        display: inline-block;
+        margin: 5px 0;
+    }
+
+    .stat-legend span {
+        margin-left: 10px;
+    }
+
+    .stat-legend span.circle {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+    <h1>Statistiques des utilisateurs</h1>
+
+    <div class="stat-card">
+        <canvas id="userStatisticsChart" width="300" height="300"></canvas>
+
+        <div class="stat-legend">
+            <div>
+                <span class="circle" style="background-color: #FF5733;"></span>
+                <span>Rouge - Admins</span>
+            </div>
+            <div>
+                <span class="circle" style="background-color: #33FF57;"></span>
+                <span>Vert - Agriculteurs</span>
+            </div>
+            <div>
+                <span class="circle" style="background-color: #3357FF;"></span>
+                <span>Bleu - Clients</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('userStatisticsChart').getContext('2d');
+        var userStatisticsChart = new Chart(ctx, {
+            type: 'pie', // Utilisation d'un graphique circulaire
+            data: {
+                labels: ['Admins', 'Agriculteurs', 'Clients'],
+                datasets: [{
+                    label: 'Nombre d\'utilisateurs',
+                    data: [{{ adminCount }}, {{ agriculteurCount }}, {{ clientCount }}], // Données passées depuis le contrôleur
+                    backgroundColor: ['#FF5733', '#33FF57', '#3357FF'], // Couleurs des segments
+                    borderColor: ['#fff', '#fff', '#fff'],
+                    borderWidth: 1
+                }]
+            }
+        });
+    </script>
+{% endblock %}

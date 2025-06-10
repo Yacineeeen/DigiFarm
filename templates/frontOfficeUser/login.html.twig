@@ -1,0 +1,21 @@
+{% extends 'internaute.html.twig' %}
+
+{% block body %}
+<h2>Connexion</h2>
+<form method="post" action="{{ path('login') }}">
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Mot de passe" required>
+
+    <!-- reCAPTCHA -->
+    <div class="g-recaptcha" data-sitekey="6LcOWOgqAAAAAECv6sUD52WzghQGisLxy5XoSlJL"></div>
+
+    <button type="submit">Login</button>
+
+    <p>Si vous n'avez pas de compte, vous pouvez vous <a href="{{ path('app_user_new_front') }}">inscrire ici</a>.</p>
+    <p>Mot de passe oublié ? <a href="{{ path('forgot_password') }}">Réinitialiser-le</a>.</p>
+</form>
+
+<!-- Script reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Statistiques des Ventes{% endblock %}
+
+{% block body %}
+    <div class="container mt-5 bg-custom p-4 rounded">
+        <h1 class="text-center mb-4 text-custom" style="color: #F1CF69ED;">Statistiques des Ventes</h1>
+
+        <!-- Filtres -->
+        <div class="card shadow-sm border-custom mb-4">
+            <div class="card-header bg-custom text-white">
+                <h4>Filtres</h4>
+            </div>
+            <div class="card-body">
+                {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            {{ form_row(form.periode, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            {{ form_row(form.start_date, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            {{ form_row(form.end_date, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="custom-btn">Filtrer</button>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+        <!-- Graphique des Ventes -->
+        <div class="card shadow-sm border-custom mb-4">
+            <div class="card-header bg-custom text-white">
+                <h4>Graphique des Ventes</h4>
+            </div>
+            <div class="card-body">
+                <canvas id="salesChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+
+        <!-- Lien pour exporter en PDF --> 
+        <div class="text-center mb-4">
+           <a href="{{ path('export_sales_pdf', {'start_date': start_date, 'end_date': end_date}) }}">Exporter en PDF</a>
+            
+        </div>
+
+        <!-- Injecter les données du graphique avec Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+            var ctx = document.getElementById('salesChart').getContext('2d');
+            var salesChart = new Chart(ctx, {
+                type: 'bar', // Type de graphique (bar, line, pie, etc.)
+                data: {
+                    labels: {{ dates|json_encode()|raw  }}, // Mois/années des ventes
+                    datasets: [{
+                        label: 'Ventes (  en usd)',
+                        data: {{ montants|json_encode()|raw  }}, // Montants des ventes
+                        backgroundColor: 'rgba(55, 161, 61, 0.5)',
+                        borderColor: 'rgba(55, 161, 61, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+
+        {% if pagination is defined and pagination|length > 0 %}
+            <div class="card shadow-sm border-custom mt-4">
+                <div class="card-header bg-custom text-white">
+                    <h4>Commandes Filtrées</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID Commande</th>
+                                <th>Date</th>
+                                <th>Montant Total</th>
+                                <th>Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for commande in pagination %}
+                                <tr>
+                                    <td>{{ commande.id }}</td>
+                                    <td>{{ commande.dateCommande|date('Y-m-d') }}</td>
+                                    <td>{{ commande.montantTotal|number_format(2, ',', ' ') }} usd</td>
+                                    <td>
+                                        <span class="badge 
+                                            {% if commande.statut == 'en_cours' %}badge-warning{% elseif commande.statut == 'validée' %}badge-success{% elseif commande.statut == 'livrée' %}badge-info{% else %}badge-danger{% endif %}"
+                                        >{{ commande.statut|capitalize }}</span>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <!-- Pagination -->
+                    <div class="d-flex justify-content-center">
+  {{ knp_pagination_render(pagination, '@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig', {
+        'start_date': start_date,
+        'end_date': end_date
+    }) }}
+
+
+
+                    </div>
+            </div>
+        {% else %}
+            <div class="alert alert-info mt-4 text-center">Aucune commande trouvée pour cette période.</div>
+        {% endif %}
+    </div>
+{% endblock %}

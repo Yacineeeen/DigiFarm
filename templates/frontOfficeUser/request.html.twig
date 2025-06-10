@@ -1,0 +1,7 @@
+{% extends 'internaute.html.twig' %}
+{% block body %}
+<form method="post" action="{{ path('password_reset_request') }}">
+    <input type="email" name="email" placeholder="Entrez votre adresse e-mail" >
+    <button type="submit">Envoyer le lien de réinitialisation</button>
+</form>
+{% endblock %} 

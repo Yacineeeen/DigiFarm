@@ -1,0 +1,73 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'container p-4 bg-dark text-white rounded mt-5'}}) }}
+
+<div class="mb-3">
+    {{ form_label(form.date_r, 'Date de récolte:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.date_r, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.date_r, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.culture, 'Nom de la culture:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.culture, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.culture, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.expert, "Nom de l'expert:", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.expert, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.expert, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.climat, 'Climat:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.climat, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.climat, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.type_sol, 'Type du sol:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.type_sol, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.type_sol, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.irrigation, 'Irrigation:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.irrigation, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.irrigation, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.fertilisation, 'Fertilisation:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.fertilisation, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.fertilisation, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.prix, 'Prix unitaire:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.prix, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.rendement, 'Rendement:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.rendement, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.rendement, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.precipitations, 'Précipitations:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.precipitations, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.precipitations, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.main_oeuvre, "Main d'œuvre:", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.main_oeuvre, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.main_oeuvre, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="text-center mt-3">
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+
+{{ form_end(form) }}

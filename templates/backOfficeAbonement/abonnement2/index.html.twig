@@ -1,0 +1,57 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Liste des abonnements{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="card shadow-lg p-4">
+        <h1 class="text-center text-primary mb-4">Liste des abonnements</h1>
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>NOM</th>
+                    <th>Prenom</th>
+                    <th>Numéro</th>
+                    <th>Type d'abonnement</th>
+                    <th>Durée (mois)</th>
+                    <th>Prix total ($)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for abonnement in abonnements %}
+                <tr>
+                    <td>{{ abonnement.id }}</td>
+                    <td>{{ abonnement.nom }}</td>
+                    <td>{{ abonnement.prenom }}</td>
+                    <td>{{ abonnement.numero }}</td>
+                    <td>{{ abonnement.typeAbb|capitalize }}</td>
+                    <td>{{ abonnement.dureeAbb }}</td>
+                    <td>{{ abonnement.prix }}</td>
+                    <td>
+                        <a href="{{ path('app_abonnement2_show', {'id': abonnement.id}) }}" class="btn btn-primary btn-sm">
+                            Voir
+                        </a>
+                        <a href="{{ path('app_abonnement2_edit', {'id': abonnement.id}) }}" class="btn btn-warning btn-sm">
+                            Modifier
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6" class="text-center">Aucun abonnement trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="text-center mt-4">
+            <a href="{{ path('app_abonnement2_new') }}" class="btn btn-success">
+                <i class="fas fa-plus"></i> Créer un nouvel abonnement
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'container p-4 bg-dark text-white rounded mt-5'}}) }}
+
+<div class="mb-3">
+    {{ form_label(form.nom, "Nom", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.nom, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.type, "Type", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.type, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.age, "Âge", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.age, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.age, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.poids, "Poids", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.poids, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.poids, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.race, "Race", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.race, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.race, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="text-center mt-3">
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+</div>
+
+{{ form_end(form) }}

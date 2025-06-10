@@ -1,0 +1,72 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Détails de l'Étude{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+   <div class="container mt-4 pt-5">
+    <h1 class="text-center text-primary mb-4">Études</h1>
+    <div class="card shadow-lg p-4">
+
+    <div class="card shadow-lg p-4">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th class="bg-light">ID</th>
+                    <td>{{ etude.id }}</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Date de Réalisation</th>
+                    <td>{{ etude.dateR ? etude.dateR|date('Y-m-d') : 'Non définie' }}</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Climat</th>
+                    <td>{{ etude.climat.value }}</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Type de Sol</th>
+                    <td>{{ etude.typeSol.value }}</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Irrigation</th>
+                    <td class="{{ etude.irrigation ? 'text-success' : 'text-danger' }}">
+                        {{ etude.irrigation ? 'Oui' : 'Non' }}
+                    </td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Fertilisation</th>
+                    <td class="{{ etude.fertilisation ? 'text-success' : 'text-danger' }}">
+                        {{ etude.fertilisation ? 'Oui' : 'Non' }}
+                    </td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Prix</th>
+                    <td>{{ etude.prix }} €</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Rendement</th>
+                    <td>{{ etude.rendement }} tonnes</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Précipitations</th>
+                    <td>{{ etude.precipitations }} mm</td>
+                </tr>
+                <tr>
+                    <th class="bg-light">Main d'Œuvre</th>
+                    <td>{{ etude.mainOeuvre }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <a href="{{ path('app_etude_index', {'context': app.request.get('context')}) }}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Retour à la liste
+        </a>
+        <a href="{{ path('app_etude_edit', {'context': app.request.get('context'), 'id': etude.id}) }}" class="btn btn-warning">
+            <i class="fas fa-edit"></i> Modifier
+        </a>
+        {{ include('backOfficeEtude/etude/_delete_form.html.twig') }}
+    </div>
+</div>
+{% endblock %}

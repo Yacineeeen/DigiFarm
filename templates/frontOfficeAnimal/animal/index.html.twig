@@ -1,0 +1,44 @@
+{% extends 'base_front_etude.html.twig' %}
+
+
+{% block body %}
+    <h1>Animal index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Age</th>
+                <th>Poids</th>
+                <th>Race</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for animal in animals %}
+            <tr>
+                <td>{{ animal.id }}</td>
+                <td>{{ animal.nom }}</td>
+                <td>{{ animal.type }}</td>
+                <td>{{ animal.age }}</td>
+                <td>{{ animal.poids }}</td>
+                <td>{{ animal.race }}</td>
+                <td>
+                    <a href="{{ path('app_animal_show', {'id': animal.id}) }}"  class="button">show</a>
+                                        <a href="{{ path('app_animal_edit', {'id': animal.id}) }}"  class="button">edit</a>
+
+                  {{ include('frontOfficeAnimal/animal/_delete_form.html.twig') }}   
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<center>  <a href="{{ path('front_animal_page') }}" class="button">Back</a></center>
+  <center>  <a href="{{ path('app_animal_new') }}" class="button">Create new</a></center>
+{% endblock %}

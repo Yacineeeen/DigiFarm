@@ -1,0 +1,64 @@
+{% extends 'front/base.html.twig' %}
+
+
+{% block title %}front{% endblock %}
+{% block body %}
+
+<section class="features-one clearfix">
+    <div class="container">
+        <div class="row">
+            <!-- Start Single Features One -->
+            <div class="col-xl-4 col-lg-4 wow fadeInUp animated animated">
+                <div class="features-one__single">
+                    <div class="features-one__single-img">
+                        <img src="{{ asset('assets/images/feauters/features-v1-img1.jpg') }}" alt="">
+                        <div class="features-one__single-title text-center">
+                            <h3><a href="{{ path('app_maintenance_index', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}">
+Launch a study  <br> On your machine's maintenance</a></h3>
+                        </div>
+                    </div>
+                    <a href="{{ path('app_maintenance_index', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}" class="features-one__single__more">
+    <span class="icon-right-arrow-2"></span>
+</a>
+
+                </div>
+            </div>
+            <!-- End Single Features One -->
+
+            <!-- Start Single Features One -->
+            <div class="col-xl-4 col-lg-4 wow fadeInUp animated animated">
+                <div class="features-one__single">
+                    <div class="features-one__single-img">
+                        <img src="{{ asset('assets/images/feauters/machine1.2.jpg') }}" alt="">
+                        <div class="features-one__single-title text-center">
+                            <h3><a href="{{ path('app_machine_index', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}" >
+Manage your <br> Agricultural Machines</a></h3>
+                        </div>
+                    </div>
+                    <a href="{{ path('app_machine_index', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}" class="features-one__single__more">
+                        <span class="icon-right-arrow-2"></span>
+                    </a>
+                </div>
+            </div>
+            <!-- End Single Features One -->
+
+            <!-- Start Single Features One -->
+            <div class="col-xl-4 col-lg-4 wow fadeInUp animated animated">
+                <div class="features-one__single style2 text-center">
+                    <div class="features-one__single-bg" style="background-image: url(assets/images/backgrounds/features-one-single-bg.png);"></div>
+                    <div class="features-one__single-img">
+                        <img src="{{ asset('assets/images/feauters/machine2.1.jpg') }}" alt="">
+                    </div>
+                    <div class="features-one__single-title text-center">
+                         <h3><a href="{{ path('app_technicien_index', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}">Find a <br> Technician</a></h3>
+                    </div>
+                    <div class="button">
+                        <a href="{{ path('app_technicien_index', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}" class="thm-btn">See Your Technicians</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Single Features One -->
+        </div>
+    </div>
+</section>
+{% endblock %}

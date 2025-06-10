@@ -1,0 +1,37 @@
+<!-- Graphique des statistiques -->
+<div class="card mt-5">
+    <div class="card-body">
+        <h2>Statistiques des Animaux</h2>
+        <canvas id="animalChart"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        
+        const statsData = {{ stats|json_encode|raw }};
+        console.log("Données pour le graphique:", statsData); // Vérification dans la console
+
+        const ctx = document.getElementById('animalChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(statsData),
+                datasets: [{
+                    label: 'Nombre d\'animaux par type',
+                    data: Object.values(statsData),
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    });
+</script>

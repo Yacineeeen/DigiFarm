@@ -1,0 +1,103 @@
+{# templates/OfficeEtude/etude/base_front_etude.html.twig #}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Étude PDF</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 150px;
+        }
+        h1 {
+            color: #2c6b2f;
+            font-size: 30px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 15px;
+            text-align: left;
+        }
+        .details p {
+            flex: 1;
+            min-width: 280px;
+            background: #f9f9f9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            background: #2c6b2f;
+            color: #fff;
+            padding: 12px;
+            font-size: 18px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        strong {
+            color: #2c6b2f;
+        }
+        @media (max-width: 768px) {
+            .details {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Étude {{ etude.id }}</h1>
+
+        <div class="section-title">Informations Générales</div>
+        <div class="details">
+            <p><strong>Date de l'étude:</strong> {{ etude.dateR ? etude.dateR|date('Y-m-d') : 'Non définie' }}</p>
+            <p><strong>Culture:</strong> {{ etude.culture.nom }}</p>
+            <p><strong>Expert:</strong> {{ etude.expert.nom }}</p>
+        </div>
+
+        <div class="section-title">Conditions Environnementales</div>
+        <div class="details">
+            <p><strong>Climat:</strong> {{ etude.climat.value }}</p>
+            <p><strong>Type de sol:</strong> {{ etude.typeSol.value }}</p>
+            <p><strong>Irrigation:</strong> {{ etude.irrigation ? 'Oui' : 'Non' }}</p>
+        </div>
+
+        <div class="section-title">Données Techniques</div>
+        <div class="details">
+            <p><strong>Fertilisation:</strong> {{ etude.fertilisation ? 'Oui' : 'Non' }}</p>
+            <p><strong>Prix:</strong> {{ etude.prix }} €</p>
+            <p><strong>Rendement:</strong> {{ etude.rendement }} kg/ha</p>
+        </div>
+
+        <div class="section-title">Autres Informations</div>
+        <div class="details">
+            <p><strong>Précipitations:</strong> {{ etude.precipitations }} mm</p>
+            <p><strong>Main d'œuvre:</strong> {{ etude.mainOeuvre }} heures/ha</p>
+        </div>
+    </div>
+</body>
+</html>

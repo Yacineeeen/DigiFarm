@@ -1,0 +1,51 @@
+{% extends 'base_front_etude.html.twig' %}
+
+
+{% block title %}front{% endblock %}
+{% block body %}
+
+<section class="features-one clearfix">
+    <div class="container">
+        <div class="row">
+            <!-- Start Single Features One -->
+            <div class="col-xl-4 col-lg-4 wow fadeInUp animated animated">
+                <div class="features-one__single">
+                    <div class="features-one__single-img">
+                        <img src="{{ asset('assets/images/feauters/features-v1-img1.jpg') }}" alt="">
+                        <div class="features-one__single-title text-center">
+                            <h3><a href="{{ path('app_suivi_index', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}">
+Launch a Suivi <br> On your animals</a></h3>
+                        </div>
+                    </div>
+                    <a href="{{ path('app_suivi_index', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}" class="features-one__single__more">
+    <span class="icon-right-arrow-2"></span>
+</a>
+
+                </div>
+            </div>
+            <!-- End Single Features One -->
+
+            <!-- Start Single Features One -->
+            <div class="col-xl-4 col-lg-4 wow fadeInUp animated animated">
+                <div class="features-one__single">
+                    <div class="features-one__single-img">
+                        <img src="{{ asset('assets/images/feauters/machine1.2.jpg') }}" alt="">
+                        <div class="features-one__single-title text-center">
+                            <h3><a href="{{ path('app_animal_index', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}" >
+Manage your <br> Farm's Animals</a></h3>
+                        </div>
+                    </div>
+                    <a href="{{ path('app_animal_index', {'context': app.request.get('context') ? app.request.get('context') : 'front'}) }}" class="features-one__single__more">
+                        <span class="icon-right-arrow-2"></span>
+                    </a>
+                </div>
+            </div>
+            <!-- End Single Features One -->
+
+            <!-- Start Single Features One -->
+   
+            <!-- End Single Features One -->
+        </div>
+    </div>
+</section>
+{% endblock %}

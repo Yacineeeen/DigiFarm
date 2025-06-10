@@ -1,0 +1,58 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Expert Index{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+ <div class="container mt-4 pt-5">
+    <h1 class="text-center text-primary mb-4">Expert</h1>
+    <div class="card shadow-lg p-4">
+    <div class="card shadow-lg p-4">
+        <table class="table table-bordered table-striped">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Téléphone</th>
+                    <th>Email</th>
+                    <th>Zone</th>
+                    <th>Disponibilité</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for expert in experts %}
+                <tr>
+                    <td>{{ expert.id }}</td>
+                    <td>{{ expert.nom }}</td>
+                    <td>{{ expert.prenom }}</td>
+                    <td>{{ expert.tel }}</td>
+                    <td>{{ expert.email }}</td>
+                    <td>{{ expert.zone }}</td>
+                    <td>{{ expert.dispo.value }}</td>
+                    <td>
+                        <a href="{{ path('app_expert_show', {'context': app.request.get('context'), 'id': expert.id}) }}" class="btn btn-info btn-sm">
+                            Show
+                        </a>
+                        <a href="{{ path('app_expert_edit', {'context': app.request.get('context'), 'id': expert.id}) }}" class="btn btn-warning btn-sm">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8" class="text-center">Aucun expert trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{{ path('app_expert_new', {'context': app.request.get('context')}) }}" class="btn btn-success">
+            <i class="fas fa-plus"></i> Créer un nouvel expert
+        </a>
+    </div>
+</div>
+{% endblock %}

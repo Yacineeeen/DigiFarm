@@ -1,0 +1,54 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Veterinaire Details{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <div class="card shadow-sm bg-dark text-white">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Veterinaire Details</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="p-3 border rounded bg-dark text-white">
+                            <h5>ID</h5>
+                            <p class="mb-0">{{ veterinaire.id }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="p-3 border rounded bg-dark text-white">
+                            <h5>Nom</h5>
+                            <p class="mb-0">{{ veterinaire.nom }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="p-3 border rounded bg-dark text-white">
+                            <h5>Téléphone</h5>
+                            <p class="mb-0">{{ veterinaire.numTel }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="p-3 border rounded bg-dark text-white">
+                            <h5>Email</h5>
+                            <p class="mb-0">{{ veterinaire.email }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="p-3 border rounded bg-dark text-white">
+                            <h5>Adresse Cabinet</h5>
+                            <p class="mb-0">{{ veterinaire.adresseCabine }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mt-3">
+                    <div>
+                        <a href="{{ path('app_veterinaire2_index') }}" class="btn btn-outline-secondary">Back to List</a>
+                        <a href="{{ path('app_veterinaire2_edit', {'id': veterinaire.id}) }}" class="btn btn-warning">Edit</a>
+                        {{ include('backOfficeAnimal/veterinaire2/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

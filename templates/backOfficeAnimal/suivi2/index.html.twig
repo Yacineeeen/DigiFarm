@@ -1,0 +1,54 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="container mt-4 pt-5">
+        <h1 class="text-center text-primary mb-4">Suivi</h1>
+        <div class="card shadow-lg p-4">
+            <table class="table table-bordered table-striped">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Température</th>
+                        <th>Rythme Cardiaque</th>
+                        <th>État</th>
+                        <th>Vétérinaire</th>
+                        <th>ID Client</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for suivi in suivis %}
+                    <tr>
+                        <td>{{ suivi.id }}</td>
+                        <td>{{ suivi.temperature }}</td>
+                        <td>{{ suivi.rythmeCardiaque }}</td>
+                        <td>{{ suivi.etat }}</td>
+                        <td>{{ suivi.veterinaire.id }}</td>
+                        <td>{{ suivi.idClient }}</td>
+                        <td>
+                            <a href="{{ path('app_suivi2_show', {'id': suivi.id}) }}" class="btn btn-info btn-sm">
+                                Show
+                            </a>
+                            <a href="{{ path('app_suivi2_edit', {'id': suivi.id}) }}" class="btn btn-warning btn-sm">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center">Aucun suivi trouvé</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ path('app_suivi2_new') }}" class="btn btn-success">
+                <i class="fas fa-plus"></i> Créer un nouveau suivi
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

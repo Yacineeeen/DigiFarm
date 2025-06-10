@@ -1,0 +1,10 @@
+{% extends 'base_front_etude.html.twig' %}
+
+
+{% block body %}
+    <h1>Create new veterinaire</h1>
+
+    {{ include('frontOfficeAnimal/veterinaire/_form.html.twig') }}
+
+  <center>  <a href="{{ path('app_veterinaire_index') }}" class="button">back to list</a></center>
+{% endblock %}

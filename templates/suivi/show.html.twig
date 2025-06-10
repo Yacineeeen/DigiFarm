@@ -1,0 +1,42 @@
+{% extends 'base_front_etude.html.twig' %}
+
+<title>Suivi</title>
+
+{% block body %}
+    <h1>Suivi</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ suivi.id }}</td>
+            </tr>
+            <tr>
+                <th>Temperature</th>
+                <td>{{ suivi.temperature }}</td>
+            </tr>
+            <tr>
+                <th>Rythme_cardiaque</th>
+                <td>{{ suivi.rythmeCardiaque }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ suivi.etat }}</td>
+            </tr>
+            <tr>
+                <th>Veterinaire</th>
+                <td>{{ suivi.veterinaire }}</td>
+            </tr>
+            <tr>
+                <th>Id_client</th>
+                <td>{{ suivi.idClient }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_suivi_index') }}">back to list</a>
+
+    <a href="{{ path('app_suivi_edit', {'id': suivi.id}) }}">edit</a>
+
+    {{ include('suivi/_delete_form.html.twig') }}
+{% endblock %}

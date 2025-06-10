@@ -1,0 +1,136 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block title %}🌾 Détails de la Culture Agricole {% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="text-center text-light mb-4">🌱 Détails de la Culture Agricole 🌾</h1>
+
+    <div class="card shadow-lg border-0 rounded bg-dark text-light">
+        <div class="card-body p-5">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="info-box">
+                        <h5>ID</h5>
+                        <p>{{ culture.id }}</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Nom</h5>
+                        <p class="text-warning fw-bold">{{ culture.nom }}</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Surface</h5>
+                        <p>{{ culture.surface }} ha</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Région</h5>
+                        <p class="text-info">{{ culture.region }}</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Type de culture</h5>
+                        <p class="badge bg-success">{{ culture.typeCulture }}</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="info-box">
+                        <h5>Date de plantation</h5>
+                        <p>{{ culture.datePlantation ? culture.datePlantation|date('Y-m-d') : 'Non définie' }}</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Date de récolte</h5>
+                        <p>{{ culture.dateRecolte ? culture.dateRecolte|date('Y-m-d') : 'Non définie' }}</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Densité de plantation</h5>
+                        <p>{{ culture.densitePlantation }} plants/ha</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Besoins en eau</h5>
+                        <p>{{ culture.besoinsEau }} mm</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Besoins en engrais</h5>
+                        <p class="badge bg-warning">{{ culture.besoinsEngrais ? culture.besoinsEngrais.value|upper : 'Non défini' }}</p>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="info-box">
+                        <h5>Rendement moyen</h5>
+                        <p class="text-success fw-bold">{{ culture.rendementMoyen }} T/ha</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>Coût moyen</h5>
+                        <p class="text-danger fw-bold">{{ culture.coutMoyen }} €/ha</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 📊 Bouton pour prédire le rendement -->
+            <div class="text-center mt-4">
+                <button id="predictRendement" class="btn btn-light text-success fw-bold px-4" data-culture-id="{{ culture.id }}">📊 Prédire le Rendement</button>
+            </div>
+
+            <!-- Conteneur pour afficher le résultat de la prédiction -->
+            <div class="text-center mt-3">
+                <div id="predictedRendement" class="fw-bold fs-5"></div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="{{ path('app_culture_index', {'context': app.request.get('context')}) }}" class="btn btn-secondary px-4">🔙 Retour</a>
+                <a href="{{ path('app_culture_edit', {'context': app.request.get('context'), 'id': culture.id}) }}" class="btn btn-warning px-4">✏ Modifier</a>
+                {{ include('frontOfficeEtude/culture/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .info-box {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .info-box h5 {
+        font-weight: bold;
+        color: #a8df65; /* Green agriculture theme */
+    }
+    .info-box p {
+        font-size: 18px;
+        color: white;
+    }
+</style>
+
+<script>
+    document.getElementById('predictRendement').addEventListener('click', function() {
+        let cultureId = this.getAttribute('data-culture-id');
+        let predictionContainer = document.getElementById('predictedRendement');
+
+        fetch("{{ path('app_culture_predire', {'id': culture.id}) }}", {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erreur serveur: " + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.rendement_estime !== undefined) {
+                predictionContainer.innerHTML = `📈 Rendement estimé : <strong>${data.rendement_estime} T/ha</strong>`;
+            } else {
+                predictionContainer.innerHTML = `❌ Erreur : ${data.error || "Impossible de prédire le rendement"}`;
+            }
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            predictionContainer.innerHTML = '❌ Une erreur est survenue lors de la prédiction.';
+        });
+    });
+</script>
+
+{% endblock %}

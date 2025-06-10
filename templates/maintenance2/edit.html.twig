@@ -1,0 +1,76 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Edit Maintenance{% endblock %}
+
+{% block stylesheets %}
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+body {
+            font-family: 'Roboto', sans-serif;
+        }
+    {{ parent() }}
+    <style>
+        .maintenance-edit-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgb(76, 106, 135);
+            border-radius: 8px;
+            box-shadow: 0 0 10px #9a28e6;
+        }
+        .maintenance-edit-title {
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #6a1b9a;
+            font-weight: bold;
+            text-align: center;
+        }
+        .form-container {
+            background-color: #6a1b9a;
+            padding: 20px;
+            border-radius: 8px;
+            color: #fff;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #fff;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .text-danger {
+            font-size: 0.875rem;
+            color: #dc3545;
+        }
+        .btn-primary {
+            background-color: hsl(0, 15.40%, 5.10%);
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #498bc5;
+            color: white;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="maintenance-edit-container">
+        <h1 class="maintenance-edit-title">Edit Maintenance</h1>
+        <div class="form-container">
+            {{ include('maintenance2/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+
+        <div class="actions">
+            <a class="btn btn-secondary" href="{{ path('app_maintenance2_index') }}">Back to list</a>
+            {{ include('maintenance2/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+{% endblock %}

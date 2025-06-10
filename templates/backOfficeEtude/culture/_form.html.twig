@@ -1,0 +1,75 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'container p-4 bg-dark text-white rounded mt-5'}}) }}
+
+<div class="mb-3">
+    {{ form_label(form.nom, 'Nom de la culture:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.nom, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.surface, 'Surface:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.surface, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.surface, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.date_plantation, 'Date de plantation:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.date_plantation, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.date_plantation, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.date_recolte, 'Date de récolte:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.date_recolte, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.date_recolte, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.region, 'Région:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.region, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.region, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.type_culture, 'Type de culture:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.type_culture, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.type_culture, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.densite_plantation, 'Densité de plantation (par hectare):', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.densite_plantation, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.densite_plantation, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.besoins_eau, 'Besoins en eau (m³/hectare):', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.besoins_eau, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.besoins_eau, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.besoins_engrais, 'Besoins en engrais:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.besoins_engrais, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.besoins_engrais, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.rendement_moyen, 'Rendement moyen (tonnes/hectare):', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.rendement_moyen, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.rendement_moyen, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.cout_moyen, 'Coût moyen:', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.cout_moyen, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.cout_moyen, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+
+
+<div class="text-center mt-3">
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+</div>
+
+{{ form_end(form) }}

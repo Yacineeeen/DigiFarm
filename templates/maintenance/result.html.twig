@@ -1,0 +1,19 @@
+{# templates/maintenance/result.html.twig #}
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Prediction Result{% endblock %}
+
+{% block body %}
+    <div class="maintenance-new">
+        <h1>Prediction Result</h1>
+
+        <div class="form-container">
+            <p>The predicted status for maintenance on machine <strong>{{ maintenance.idMachine.nom }}</strong> is: <strong>{{ maintenance.etatPred }}</strong></p>
+
+            <div class="actions">
+                <a class="btn btn-primary" href="{{ path('app_maintenance_send_email', {'id': maintenance.id}) }}">Send Email to Technician</a>
+                <a class="btn btn-secondary" href="{{ path('app_maintenance_index') }}">Back to List</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

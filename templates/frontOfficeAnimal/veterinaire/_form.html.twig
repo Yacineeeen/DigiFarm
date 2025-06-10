@@ -1,0 +1,31 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+<div>
+    {{ form_label(form.nom, "Nom") }}
+    {{ form_widget(form.nom) }}
+    {{ form_errors(form.nom) }}
+</div>
+
+<div>
+    {{ form_label(form.num_tel, "Numéro de téléphone") }}
+    {{ form_widget(form.num_tel) }}
+    {{ form_errors(form.num_tel) }}
+</div>
+
+<div>
+    {{ form_label(form.email, "Email") }}
+    {{ form_widget(form.email) }}
+    {{ form_errors(form.email) }}
+</div>
+
+<div>
+    {{ form_label(form.adresse_cabine, "Adresse du cabinet") }}
+    {{ form_widget(form.adresse_cabine) }}
+    {{ form_errors(form.adresse_cabine) }}
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <button type="submit">{{ button_label|default('Enregistrer') }}</button>
+</div>
+
+{{ form_end(form) }}

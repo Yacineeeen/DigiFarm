@@ -1,0 +1,61 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'container p-4'}}) }}
+
+<div class="mb-3">
+    {{ form_label(form.dateEntretien , "Date Entretien", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.dateEntretien, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.dateEntretien, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.cout , "Cout", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.cout, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.cout, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.temperature , "Temperature", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.temperature, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.temperature, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.humidite , "Humidite", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.humidite, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.humidite, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.consoCarburant , "Conso Carburant", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.consoCarburant, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.consoCarburant, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.consoEnergie , "Conso Energie", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.consoEnergie, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.consoEnergie, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.status , "Status", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.status, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.idMachine , "Machine", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.idMachine, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.idMachine, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.idTechnicien , "Technicien", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.idTechnicien, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.idTechnicien, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="text-center mt-3">
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+
+{{ form_end(form) }}

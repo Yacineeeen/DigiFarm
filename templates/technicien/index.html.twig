@@ -1,0 +1,180 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Technicien Index{% endblock %}
+
+{% block stylesheets %}
+    {# Include Google Fonts for improved typography #}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e9f5e9; /* Light green background */
+            color: #333;
+        }
+
+        .technicien-index {
+            margin: 40px auto;
+            padding: 30px;
+            max-width: 1200px;
+            background-color: #ffffff; /* White background for the table container */
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .technicien-index h1 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50; /* Dark blue for headings */
+            text-align: center;
+            font-family: 'Lora', serif;
+        }
+
+        /* Table Styles */
+        .technicien-index table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+        }
+
+        .technicien-index th, .technicien-index td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .technicien-index th {
+            background-color: #FFD700; /* Yellow for table headers */
+            color: #333; /* Dark text for contrast */
+            font-family: 'Lora', serif;
+            font-weight: 700;
+        }
+
+        .technicien-index tr:nth-child(even) {
+            background-color: #f8f8f8; /* Light gray for even rows */
+        }
+
+        .technicien-index tr:hover {
+            background-color: #e0f7e0; /* Light green hover effect */
+        }
+
+        /* Buttons */
+        .technicien-index .btn {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #333; /* Dark text for contrast */
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .technicien-index .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .technicien-index .btn-primary {
+            background-color: #FFD700; /* Yellow for primary actions */
+        }
+
+        .technicien-index .btn-primary:hover {
+            background-color: hsl(133, 89.00%, 17.80%); /* Darker yellow on hover */
+        }
+
+        .technicien-index .btn-secondary {
+            background-color: #95a5a6; /* Gray for secondary actions */
+        }
+
+        .technicien-index .btn-secondary:hover {
+            background-color: #7f8c8d; /* Darker gray on hover */
+        }
+
+        .technicien-index .btn-danger {
+            background-color: #e0f7e0; /* Red for delete actions */
+        }
+
+        .technicien-index .btn-danger:hover {
+            background-color: #e0f7e0; /* Darker red on hover */
+        }
+
+        /* Labels */
+        .technicien-index .form-group label {
+            color: #FFD700; /* Yellow for labels */
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .technicien-index {
+                padding: 20px;
+            }
+
+            .technicien-index h1 {
+                font-size: 24px;
+            }
+
+            .technicien-index table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            .technicien-index .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="technicien-index">
+        <h1>Technicien List</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                   
+                    <th>Name</th>
+                    <th>First Name</th>
+                    <th>Specialite</th>
+                    <th>Email</th>
+                    <th>Telephone</th>
+                    <th>Localisation</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for technicien in techniciens %}
+                <tr>
+                    
+                    <td>{{ technicien.name }}</td>
+                    <td>{{ technicien.prenom }}</td>
+                    <td>{{ technicien.specialite }}</td>
+                    <td>{{ technicien.email }}</td>
+                    <td>{{ technicien.telephone }}</td>
+                    <td>{{ technicien.localisation }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ path('app_technicien_show', {'id': technicien.id}) }}">Show</a>
+                        <a class="btn btn-secondary" href="{{ path('app_technicien_edit', {'id': technicien.id}) }}">Edit</a>
+                        <form method="post" action="{{ path('app_technicien_delete', {'id': technicien.id}) }}" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ technicien.id) }}">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a class="btn btn-primary" href="{{ path('app_technicien_new') }}">Create new</a>
+    </div>
+{% endblock %}

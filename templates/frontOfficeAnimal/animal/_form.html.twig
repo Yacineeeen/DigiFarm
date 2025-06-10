@@ -1,0 +1,37 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+<div>
+    {{ form_label(form.nom, "Nom") }}
+    {{ form_widget(form.nom) }}
+    {{ form_errors(form.nom) }}
+</div>
+
+<div>
+    {{ form_label(form.type, "Type") }}
+    {{ form_widget(form.type) }}
+    {{ form_errors(form.type) }}
+</div>
+
+<div>
+    {{ form_label(form.age, "Âge") }}
+    {{ form_widget(form.age) }}
+    {{ form_errors(form.age) }}
+</div>
+
+<div>
+    {{ form_label(form.poids, "Poids") }}
+    {{ form_widget(form.poids) }}
+    {{ form_errors(form.poids) }}
+</div>
+
+<div>
+    {{ form_label(form.race, "Race") }}
+    {{ form_widget(form.race) }}
+    {{ form_errors(form.race) }}
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <button type="submit" class="btn">{{ button_label|default('Enregistrer') }}</button>
+</div>
+
+{{ form_end(form) }}

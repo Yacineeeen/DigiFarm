@@ -1,0 +1,12 @@
+{% extends 'base_front_etude.html.twig' %}
+
+
+{% block body %}
+    <h1>Edit Suivi</h1>
+
+    {{ include('frontOfficeAnimal/suivi/_form.html.twig', {'button_label': 'Update'}) }}
+
+   <center> <a href="{{ path('app_suivi_index') }}" class="button">back to list</a></center>
+
+    {{ include('frontOfficeAnimal/suivi/_delete_form.html.twig') }}
+{% endblock %}

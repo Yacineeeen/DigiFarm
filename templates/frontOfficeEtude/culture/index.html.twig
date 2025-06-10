@@ -1,0 +1,86 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block title %}🌾 Cultures Agricoles {% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+
+    <!-- 🌱 Section de gestion des cultures -->
+    <div class="card bg-success bg-gradient text-white shadow-lg rounded p-4 mb-4">
+        <h2 class="text-center fw-bold">🌿 Liste des Cultures</h2>
+    </div>
+
+    <!-- 🌾 Tableau des Cultures -->
+    <div class="table-responsive">
+        <table class="table table-striped table-hover text-center shadow-lg">
+            <thead class="bg-dark text-light">
+                <tr>
+                    <th>Nom 🌱</th>
+                    <th>Surface 🌍</th>
+                    <th>Date Plantation 📅</th>
+                    <th>Date Récolte 🌾</th>
+                    <th>Région 🗺️</th>
+                    <th>Type de Culture 🌾</th>
+                    <th>Densité Plantation 🌱</th>
+                    <th>Besoins en Eau 💧</th>
+                    <th>Besoins en Engrais 🧪</th>
+                    <th>Rendement 📈</th>
+                    <th>Coût 💰</th>
+                    <th>Actions ⚙️</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for culture in cultures %}
+                <tr class="align-middle">
+                    <td class="fw-bold">{{ culture.nom }}</td>
+                    <td>{{ culture.surface }} ha</td>
+                    <td>{{ culture.datePlantation ? culture.datePlantation|date('Y-m-d') : 'Non définie' }}</td>
+                    <td>{{ culture.dateRecolte ? culture.dateRecolte|date('Y-m-d') : 'Non définie' }}</td>
+                    <td>{{ culture.region }}</td>
+                    <td><span class="badge bg-primary">{{ culture.typeCulture }}</span></td>
+                    <td class="text-success fw-bold">{{ culture.densitePlantation }}</td>
+                    <td class="text-info">{{ culture.besoinsEau }} L</td>
+                    <td class="text-warning">{{ culture.besoinsEngrais.value }}</td>
+                    <td class="text-success fw-bold">{{ culture.rendementMoyen }} T/ha</td>
+                    <td class="text-danger fw-bold">{{ culture.coutMoyen }} €</td>
+                    <td>
+                        <a href="{{ path('app_culture_show', {'context': app.request.get('context'),'id': culture.id}) }}" class="btn btn-outline-primary btn-sm">👀 Voir</a>
+                        <a href="{{ path('app_culture_edit', {'context': app.request.get('context'),'id': culture.id}) }}" class="btn btn-outline-warning btn-sm">✏️ Modifier</a>
+                        {{ include('frontOfficeEtude/culture/_delete_form.html.twig') }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="12" class="text-center text-muted">🌱 Aucune culture trouvée</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{{ path('app_culture_new', {'context': app.request.get('context')}) }}" class="btn btn-success px-4">🌱 Ajouter une nouvelle Culture</a>
+        <a href="{{ path('app_calendar', {'context': app.request.get('context')}) }}" class="btn btn-info px-4">📅 Voir le Calendrier</a>
+    <center>
+    <a href="{{ path('statistiques_rendement') }}" class="btn btn-primary">
+        📊 Voir les Statistiques du Rendement
+    </a>
+</center>
+
+
+        <a href="{{ path('front_page') }}" class="btn btn-secondary px-4">🔙 Retour</a>
+    </div>
+</div>
+
+<style>
+    /* 🌾 Styles Personnalisés pour l'Agriculture */
+    .table tbody tr:hover {
+        background: rgba(0, 128, 0, 0.1);
+        transition: 0.3s;
+    }
+    .btn {
+        border-radius: 20px;
+    }
+</style>
+
+{% endblock %}

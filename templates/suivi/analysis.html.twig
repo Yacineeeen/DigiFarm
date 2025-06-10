@@ -1,0 +1,65 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block title %}Analysis - {{ suivi.id }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="card shadow-sm bg-dark text-white"> <!-- Dark background for the card -->
+            <div class="card-header bg-secondry text-white"> <!-- Darker header -->
+                <h1 class="card-title">Analysis for Suivi #{{ suivi.id }}</h1>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="text-white">Animal Data</h3> <!-- White text for headings -->
+                        <ul class="list-group">
+                            <li class="list-group-item bg-dark text-white"> <!-- Dark list items -->
+                                <strong>Temperature:</strong> {{ suivi.temperature }}°C
+                            </li>
+                            <li class="list-group-item bg-dark text-white">
+                                <strong>Rythme Cardiaque:</strong> {{ suivi.rythmeCardiaque }} BPM
+                            </li>
+                            <li class="list-group-item bg-dark text-white">
+                                <strong>État:</strong> {{ suivi.etat }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="text-white">Analysis Result</h3>
+                        <div class="card bg-dark text-white"> <!-- Dark card for analysis result -->
+                            <div class="card-body">
+                                <p class="card-text">{{ analysis }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }} <!-- Inherit existing styles -->
+    <style>
+        /* Custom dark theme styles */
+        .card.bg-dark {
+            border: 1px solid #444; /* Dark border for cards */
+        }
+        .list-group-item.bg-dark {
+            border-color: #555; /* Dark border for list items */
+        }
+        .card-header.bg-primary {
+            border-bottom: 1px solid #666; /* Darker border for card header */
+        }
+        .form-control-dark {
+            background-color: #333; /* Dark background for form controls */
+            color: #fff; /* White text for form controls */
+            border-color: #555; /* Dark border for form controls */
+        }
+        .form-control-dark:focus {
+            background-color: #444; /* Slightly lighter background on focus */
+            color: #fff;
+            border-color: #777; /* Lighter border on focus */
+        }
+    </style>
+{% endblock %}

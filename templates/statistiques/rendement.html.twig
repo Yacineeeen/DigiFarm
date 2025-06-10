@@ -1,0 +1,26 @@
+{% extends 'base_front_etude.html.twig' %}
+
+{% block title %}📊 Statistiques de Rendement {% endblock %}
+
+{% block body %}
+<div class="container mt-5 text-center">
+    <h2 class="text-success fw-bold">📈 Statistiques de Rendement</h2>
+    
+    <!-- Vérifier si l'image existe avant d'afficher -->
+    <div class="mt-4">
+        {% if image is defined and image is not empty %}
+            <img src="{{ asset(image) }}" class="img-fluid border shadow-lg rounded" alt="Statistiques de rendement">
+        {% else %}
+            <p class="text-danger fw-bold">❌ Erreur : L'image du rendement n'est pas disponible.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+<style>
+    .img-fluid {
+        max-width: 80%;
+        height: auto;
+    }
+</style>
+{% endblock %}

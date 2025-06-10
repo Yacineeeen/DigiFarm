@@ -1,0 +1,54 @@
+{% extends 'base_back_etude.html.twig' %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="container mt-4 pt-5">
+        <h1 class="text-center text-primary mb-4">Animals</h1>
+        <div class="card shadow-lg p-4">
+            <table class="table table-bordered table-striped">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Type</th>
+                        <th>Age</th>
+                        <th>Poids</th>
+                        <th>Race</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for animal in animals %}
+                    <tr>
+                        <td>{{ animal.id }}</td>
+                        <td>{{ animal.nom }}</td>
+                        <td>{{ animal.type }}</td>
+                        <td>{{ animal.age }}</td>
+                        <td>{{ animal.poids }}</td>
+                        <td>{{ animal.race }}</td>
+                        <td>
+                            <a href="{{ path('app_animal2_show', {'id': animal.id}) }}" class="btn btn-info btn-sm">
+                                Show
+                            </a>
+                              <a href="{{ path('app_animal2_edit', {'id': animal.id}) }}" class="btn btn-warning btn-sm">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center">Aucun animal trouvé</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ path('app_animal2_new') }}" class="btn btn-success">
+                <i class="fas fa-plus"></i> Créer un nouvel animal
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

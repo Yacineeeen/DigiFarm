@@ -1,0 +1,43 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'container p-4'}}) }}
+
+<div class="mb-3">
+    {{ form_label(form.statut , "Statut", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.statut, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.statut, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.type , "Type de Commande", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.type, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.quantite , "Quantité", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.quantite, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.quantite, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.prixUnitaire , "Prix Unitaire", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.prixUnitaire, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.prixUnitaire, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.montantTotal , "Montant Total", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.montantTotal, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.montantTotal, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.dateCommande , "Date de Commande", {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.dateCommande, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.dateCommande, {'attr': {'class': 'text-danger'}}) }}
+</div>
+
+<div class="text-center mt-3">
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+
+{{ form_end(form) }}
